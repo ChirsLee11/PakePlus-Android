@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高考英语词汇复习</title>
+<style>
+:root{
+  --bg:#FAFAFA;
+  --card:#ffffff;
+  --ink:#2b3a4a;
+  --muted:#8493a3;
+  --line:#edf0f3;
+  --mint:#2fbf9b;
+  --mint-dark:#26a888;
+  --mint-soft:#e9f8f3;
+  --indigo:#6a7fe0;
+  --indigo-dark:#576bd0;
+  --indigo-soft:#eef1ff;
+  --green:#27ae60;
+  --red:#e74c3c;
+  --red-soft:#fdecea;
+  --shadow:0 8px 28px rgba(31,54,76,.07);
+  --shadow-hover:0 12px 30px rgba(31,54,76,.13);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.app{max-width:960px;margin:0 auto;padding:0 18px 48px;}
+
+/* ---------- 顶部 ---------- */
+.hero{
+  margin:0 -18px 22px;
+  padding:30px 18px 26px;
+  background:linear-gradient(135deg,#e9f8f3 0%,#eef1ff 100%);
+  border-bottom:1px solid #e3e9ee;
+}
+.hero-inner{
+  max-width:924px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:14px;}
+.logo{
+  width:52px;height:52px;flex:none;border-radius:16px;
+  background:linear-gradient(135deg,var(--mint),#48c9e8);
+  color:#fff;font-weight:800;font-size:22px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 16px rgba(47,191,155,.28);
+}
+.brand h1{margin:0;font-size:22px;letter-spacing:.5px;}
+.subtitle{margin:2px 0 0;color:var(--muted);font-size:13px;}
+.dashboard{display:flex;gap:12px;}
+.stat{
+  min-width:112px;background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.9);
+  border-radius:16px;padding:12px 16px;text-align:center;box-shadow:0 4px 14px rgba(31,54,76,.05);
+}
+.stat-num{display:block;font-size:26px;font-weight:800;color:var(--mint-dark);line-height:1.2;}
+.stat-warn .stat-num{color:var(--red);}
+.stat-label{display:block;font-size:12px;color:var(--muted);margin-top:2px;}
+
+/* ---------- 标签页 ---------- */
+.tabs{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+.tab{
+  flex:1;min-width:120px;border:1px solid var(--line);background:var(--card);
+  color:var(--muted);font-size:15px;font-weight:600;
+  padding:13px 16px;border-radius:14px;cursor:pointer;
+  transition:all .18s ease;
+}
+.tab:hover{border-color:var(--mint);color:var(--mint-dark);transform:translateY(-2px);box-shadow:var(--shadow);}
+.tab:active{transform:translateY(0) scale(.98);}
+.tab.active{
+  background:linear-gradient(135deg,var(--mint),#3cc7b0);color:#fff;border-color:transparent;
+  box-shadow:0 6px 18px rgba(47,191,155,.28);
+}
+.badge{
+  display:inline-block;min-width:20px;padding:0 6px;margin-left:5px;
+  background:rgba(255,255,255,.28);border-radius:10px;font-size:12px;
+}
+.tab:not(.active) .badge{background:var(--red-soft);color:var(--red);}
+
+/* ---------- 卡片 ---------- */
+.panel.hidden{display:none;}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:26px;box-shadow:var(--shadow);margin-bottom:20px;
+}
+.card-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.card-icon{
+  width:44px;height:44px;flex:none;border-radius:13px;background:var(--mint-soft);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.card-head h2{margin:0;font-size:19px;}
+.card-desc{margin:2px 0 0;color:var(--muted);font-size:13px;}
+
+/* ---------- 表单 ---------- */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field>label{display:block;font-size:13px;font-weight:600;color:#5c6b7a;margin-bottom:8px;}
+input[type=number],.answer-input,textarea{
+  width:100%;border:1.5px solid var(--line);border-radius:12px;
+  padding:12px 14px;font-size:15px;color:var(--ink);background:#fdfefe;
+  outline:none;transition:all .18s ease;font-family:inherit;
+}
+input[type=number]:focus,.answer-input:focus,textarea:focus{
+  border-color:var(--mint);box-shadow:0 0 0 4px var(--mint-soft);background:#fff;
+}
+.input-error{border-color:var(--red)!important;box-shadow:0 0 0 4px var(--red-soft)!important;}
+
+.radio-row{display:flex;gap:10px;flex-wrap:wrap;}
+.radio{
+  flex:1;min-width:108px;display:flex;align-items:center;justify-content:center;gap:8px;
+  border:1.5px solid var(--line);border-radius:12px;padding:11px 10px;
+  font-size:14px;cursor:pointer;transition:all .18s ease;background:#fdfefe;
+}
+.radio:hover{border-color:var(--mint);background:var(--mint-soft);}
+.radio:has(input:checked){border-color:var(--mint);background:var(--mint-soft);color:var(--mint-dark);font-weight:600;}
+.radio input{accent-color:var(--mint);width:16px;height:16px;margin:0;}
+
+/* ---------- 按钮 ---------- */
+.btn{
+  border:none;border-radius:12px;padding:12px 20px;font-size:15px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:all .18s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);}
+.btn:active{transform:translateY(0) scale(.97);}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.btn.primary{background:linear-gradient(135deg,var(--mint),var(--mint-dark));color:#fff;box-shadow:0 5px 14px rgba(47,191,155,.25);}
+.btn.indigo{background:linear-gradient(135deg,var(--indigo),var(--indigo-dark));box-shadow:0 5px 14px rgba(106,127,224,.25);}
+.btn.ghost{background:#f2f5f7;color:#5c6b7a;}
+.btn.ghost:hover{background:#e8eef1;}
+.btn.danger{background:var(--red-soft);color:var(--red);}
+.btn.danger:hover{background:#fbd5d0;}
+.btn.big{padding:15px 26px;font-size:16px;width:100%;margin-top:6px;}
+.link-btn{
+  border:none;background:none;color:var(--muted);font-size:13px;cursor:pointer;
+  padding:8px 10px;font-family:inherit;transition:color .18s ease;
+}
+.link-btn:hover{color:var(--red);text-decoration:underline;}
+
+/* ---------- 答题 ---------- */
+.quiz-card{padding-top:22px;}
+.progress{height:8px;background:#eef1f4;border-radius:8px;overflow:hidden;margin-bottom:10px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--mint),#4fd6bd);border-radius:8px;transition:width .3s ease;}
+.progress-fill.indigo{background:linear-gradient(90deg,var(--indigo),#8a9aea);}
+.progress-label{font-size:13px;color:var(--muted);text-align:right;margin-bottom:26px;}
+.progress-label b{color:var(--ink);font-size:15px;}
+.streak{color:var(--indigo)!important;}
+.prompt{
+  font-size:38px;font-weight:700;text-align:center;color:var(--ink);
+  padding:36px 16px;background:linear-gradient(135deg,var(--mint-soft),var(--indigo-soft));
+  border-radius:16px;margin-bottom:8px;word-break:break-word;line-height:1.35;
+}
+.dir-label{text-align:center;color:var(--muted);font-size:13px;margin-bottom:24px;}
+.answer-row{display:flex;gap:12px;}
+.answer-row .answer-input{flex:1;min-width:0;}
+.answer-row .btn{flex:none;min-width:110px;}
+.feedback{margin-top:18px;min-height:0;}
+.result{
+  display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:14px;
+  animation:pop .25s ease;
+}
+.result.ok{background:var(--mint-soft);}
+.result.bad{background:var(--red-soft);}
+.result .mark{font-size:24px;font-weight:800;line-height:1.2;}
+.result.ok .mark{color:var(--green);}
+.result.bad .mark{color:var(--red);}
+.result-title{font-weight:700;font-size:15px;}
+.result.ok .result-title{color:var(--green);}
+.result.bad .result-title{color:var(--red);}
+.result-detail{font-size:14px;color:#4a5a69;margin-top:2px;}
+.wrong-tip{font-size:13px;color:var(--red);margin-top:4px;font-weight:600;}
+.next-row{display:flex;align-items:center;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.next-row .btn{min-width:150px;}
+.quiz-foot{text-align:center;margin-top:14px;}
+@keyframes pop{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-7px);}
+  40%,80%{transform:translateX(7px);}
+}
+.shake{animation:shake .35s ease;}
+
+/* ---------- 结算 ---------- */
+.center{text-align:center;padding:46px 26px;}
+.result-emoji{font-size:56px;margin-bottom:10px;}
+.center h2{margin:0 0 10px;font-size:24px;}
+.result-text{color:var(--muted);font-size:16px;margin-bottom:28px;}
+.result-text .wrong-num{color:var(--red);font-size:22px;}
+.result-actions{display:flex;gap:14px;max-width:460px;margin:0 auto;}
+.result-actions .btn{margin:0;}
+.empty-state{
+  background:var(--mint-soft);color:var(--mint-dark);border-radius:12px;
+  padding:12px 16px;margin-bottom:20px;font-size:14px;
+}
+
+/* ---------- 词库管理 ---------- */
+.import-card .card-icon{background:var(--indigo-soft);}
+textarea{min-height:170px;resize:vertical;line-height:1.7;font-size:14px;}
+.import-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:12px;flex-wrap:wrap;}
+.import-tip{font-size:12px;color:var(--muted);}
+.import-foot .btn{min-width:140px;}
+.import-msg{margin-top:10px;font-size:13px;min-height:20px;}
+.ok-text{color:var(--green);font-weight:600;}
+.err-text{color:var(--red);font-weight:600;}
+.list-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap;}
+.list-head h2{margin:0;font-size:19px;}
+.count-pill{
+  background:var(--mint-soft);color:var(--mint-dark);border-radius:10px;
+  padding:2px 10px;font-size:13px;vertical-align:middle;
+}
+.list-actions{display:flex;align-items:center;gap:14px;}
+.checkall{display:flex;align-items:center;gap:6px;font-size:14px;color:#5c6b7a;cursor:pointer;}
+.checkall input,.rowcheck{width:17px;height:17px;accent-color:var(--mint);cursor:pointer;}
+.table-wrap{max-height:440px;overflow:auto;border:1px solid var(--line);border-radius:12px;}
+.vocab-table{width:100%;border-collapse:collapse;font-size:14px;}
+.vocab-table th{
+  position:sticky;top:0;background:#f7f9fa;z-index:1;
+  text-align:left;padding:12px 14px;color:var(--muted);font-weight:600;font-size:13px;
+  border-bottom:1px solid var(--line);white-space:nowrap;
+}
+.vocab-table td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle;}
+.vocab-table tr:last-child td{border-bottom:none;}
+.vocab-table tbody tr:hover{background:#fbfdfd;}
+.vocab-table .cbox{width:44px;text-align:center;}
+.vocab-table .idx{width:64px;color:var(--muted);}
+.vocab-table .word{font-weight:600;color:var(--ink);white-space:nowrap;}
+.vocab-table .mean{color:#5c6b7a;}
+.empty-row{text-align:center;color:var(--muted);padding:34px!important;}
+.tag{font-size:12px;padding:3px 9px;border-radius:8px;white-space:nowrap;}
+.tag.wrong{background:var(--red-soft);color:var(--red);}
+.tag.ok{background:var(--mint-soft);color:var(--mint-dark);}
+
+/* ---------- 提示 ---------- */
+.toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+  background:#2b3a4a;color:#fff;padding:12px 22px;border-radius:12px;
+  font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.2);
+  opacity:0;pointer-events:none;transition:all .25s ease;z-index:99;
+}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+.toast.error{background:var(--red);}
+.footer{text-align:center;color:#aab6c1;font-size:12px;margin-top:8px;}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:640px){
+  .hero{padding:24px 16px 20px;}
+  .brand h1{font-size:19px;}
+  .dashboard{width:100%;}
+  .stat{flex:1;min-width:0;}
+  .tabs{gap:8px;}
+  .tab{min-width:0;font-size:14px;padding:12px 8px;}
+  .card{padding:20px 16px;}
+  .form-grid{grid-template-columns:1fr;gap:14px;}
+  .radio-row{flex-direction:column;}
+  .radio{min-width:0;}
+  .btn.big{padding:16px 20px;font-size:17px;}
+  .prompt{font-size:30px;padding:28px 12px;}
+  .answer-row{flex-direction:column;}
+  .answer-row .btn{width:100%;min-height:50px;}
+  .answer-input{min-height:50px;}
+  .result-actions{flex-direction:column;}
+  .answer-row .btn,.btn.big,.result-actions .btn{min-height:50px;}
+  textarea{min-height:150px;font-size:16px;}
+  .list-actions{width:100%;justify-content:space-between;}
+  .table-wrap{max-height:380px;}
+  .import-foot .btn{width:100%;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <div class="logo">Aa</div>
+        <div>
+          <h1>高考英语词汇复习</h1>
+          <p class="subtitle">每天一点点，词汇稳稳涨</p>
+        </div>
+      </div>
+      <div class="dashboard">
+        <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="stat-label">总词汇数</span></div>
+        <div class="stat stat-warn"><span class="stat-num" id="statWrong">0</span><span class="stat-label">错词本待消灭</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="review">常规复习</button>
+    <button class="tab" data-tab="wrongbook">专属错词本 <span class="badge" id="wrongBadge">0</span></button>
+    <button class="tab" data-tab="manage">词库管理</button>
+  </nav>
+
+  <main>
+    <section class="panel" id="panel-review"></section>
+    <section class="panel hidden" id="panel-wrongbook"></section>
+    <section class="panel hidden" id="panel-manage"></section>
+  </main>
+
+  <p class="footer">数据保存在本机浏览器中 · 可离线使用</p>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ============ 存储与数据 ============ */
+const KEY = 'gaokao_vocab';
+
+function generateId(){
+  return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,9);
+}
+
+function seedData(){
+  return [
+    {word:'abandon',    meaning:'v. 放弃；抛弃；遗弃'},
+    {word:'benefit',    meaning:'n. 益处；好处 v. 有益于'},
+    {word:'contribute', meaning:'v. 贡献；捐献；促成'}
+  ].map((s,i)=>({
+    id:generateId(), index:i+1, word:s.word, meaning:s.meaning,
+    inWrongBook:false, wrongBookStreak:0, wrongOrder:0
+  }));
+}
+
+function saveData(){
+  try{ localStorage.setItem(KEY, JSON.stringify(data)); }
+  catch(e){ alert('保存失败，请检查浏览器存储设置。'); }
+}
+
+function loadData(){
+  let d = null;
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw) d = JSON.parse(raw);
+  }catch(e){ d = null; }
+  if(!Array.isArray(d)){
+    d = seedData();
+    try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e){}
+  }
+  d.forEach(w=>{
+    if(!w.id) w.id = generateId();
+    if(typeof w.index !== 'number') w.index = 0;
+    if(typeof w.word !== 'string') w.word = '';
+    if(typeof w.meaning !== 'string') w.meaning = '';
+    if(typeof w.inWrongBook !== 'boolean') w.inWrongBook = false;
+    if(typeof w.wrongBookStreak !== 'number') w.wrongBookStreak = 0;
+    if(typeof w.wrongOrder !== 'number') w.wrongOrder = 0;
+  });
+  return d;
+}
+
+let data = loadData();
+
+const BULK_WORDS = [["personal","私人的，个人的"],["tie","系；联系；关系"],["still","仍然；静止的"],["offer","提供；出价"],["addition","增加，添加"],["success","成功"],["produce","生产；产出；引起"],["expect","期待，预料"],["cause","导致；原因，事业"],["manage","管理；设法做成"],["directly","直接地"],["wonder","想知道；奇观；奇迹"],["improve","改进，提升"],["consider","考虑；认为"],["complete","完成；完整的"],["lead","领导；通向；导致；带领"],["valuable","贵重的；有价值的"],["courageous","勇敢的"],["tend","趋向；照顾"],["treat","对待；治疗；款待"],["realize / realise","意识到；实现"],["acceptable","可接受的"],["support","支持；支撑"],["fit","合适的；安装；健康的"],["hang","悬挂"],["protect","保护"],["professional","专业的；从业人员"],["wisdom","智慧"],["widen","使变宽"],["creative","创造性的"],["damage","损害；伤害；毁坏"],["underline","在…下面划线；强调"],["mislead","误导"],["sensitive","敏感的"],["matter","事情；要紧"],["popular","流行的"],["popularity","流行，普及"],["attend","出席；照料"],["prefer","更喜欢"],["wild","野生的"],["quality","质量，品质"],["perform","表演；执行"],["promise","承诺；许诺"],["necessarily","必然地"],["store","储存；商店"],["necessary","必要的"],["general","普遍的；总的"],["condition","条件，状况"],["vary","改变；不同"],["suffer","遭受；忍受"],["speech","演讲"],["respect","尊重，敬重"],["disappoint","使失望"],["simplify","简化"],["raise","举起；筹集；养育"],["refer","涉及；查阅；提到"],["achievement","成就，成绩"],["particular","特别的"],["prevent","阻止，预防"],["regular","有规律的，定期的"],["connect","连接"],["subject","科目；主题；使服从"],["physical","物质的；身体的"],["check","检查；核对"],["position","位置；职位"],["concern","担心；涉及"],["force","强迫；力量"],["satisfy","使满意"],["organize","组织；安排"],["charge","掌管；充电；收费"],["favour / favor","恩惠；喜爱；偏爱"],["publish","出版，发行"],["focus","焦点；聚焦"],["affect","影响"],["feed","喂养；以……为食"],["weigh","称重量；重达"],["pressure","压力"],["credit","信用；功劳"],["visible","可见的"],["operate","操作；动手术；经营"],["warn","警告"],["relate","有关联；陈述"],["strength","力量，长处"],["stress","压力；强调"],["attack","攻击"],["determine","下决心"],["volunteer","志愿者；自愿"],["lack","缺乏，不足"],["equipment","设备，装备"],["expense","花费"],["deliver","递送；发表演讲；接生"],["compare","比较；比喻"],["spread","传播；扩散"],["seek","寻找"],["distant","遥远的"],["original","最初的，原版的"],["impress","留下印象"],["remind","提醒；使想起"],["communicate","交流，沟通"],["range","范围；排列"],["guidance","指导"],["avoid","避免"],["opportunity","机会"],["emotion","情绪"],["equal","相等的；等于"],["contain","包含；容纳"],["hardly","几乎不"],["announce","宣布；通知；播报"],["reward","回报，奖赏"],["desire","渴望"],["promote","促进，提升"],["gather","聚集，收集"],["similarity","相似点"],["advance","前进；进展"],["percent","百分比"],["character","性格；文字，人物"],["frighten","使害怕"],["accessible","易接近的；可得到的"],["potential","潜力；潜在的"],["review","复习；评论"],["replace","取代"],["greedy","贪婪的"],["shock","震惊；使震惊"],["judge","判断；法官"],["praise","表扬，赞扬"],["recover","恢复，康复"],["confuse","使困惑"],["spot","地点；发现"],["attempt","尝试，试图"],["available","可获得的，有空的"],["destruction","破坏，毁灭"],["construct","建造；构造"],["function","功能；起作用"],["argument","争论，论点"],["labor","劳动；劳力"],["private","私人的，秘密的"],["repeat","重复"],["spirit","精神；情绪"],["suppose","假设；认为"],["desert","沙漠；遗弃"],["exchange","交换；交流"],["fairly","公正地；相当"],["regret","后悔，遗憾"],["strict","严格的"],["fellow","同事；家伙"],["gradually","逐渐地"],["belief","信念；信仰"],["imagination","想象力"],["official","正式的；官方的"],["account","账户；说明"],["persuade","说服"],["figure","人物；算出"],["seldom","很少，难得"],["eager","渴望的"],["recommend","推荐，建议"],["remove","移除"],["unique","独一无二的"],["risk","冒险；危险"],["economic","经济的"],["pollution","污染"],["literature","文学"],["consume","消耗；消费"],["stick","粘贴；坚持"],["devote","致力于；奉献"],["predict","预测，预言"],["complain","抱怨，投诉"],["annoy","使恼怒"],["apply","应用；申请"],["handle","处理，应对"],["object","目标；物体；反对"],["select","挑选"],["opposite","相反的，对面的"],["solution","解决办法"],["struggle","奋斗，挣扎"],["approach","靠近；方法"],["urgent","紧急的"],["delight","高兴；使欣喜"],["talent","天赋；才华"],["track","跟踪；小路"],["arrange","安排"],["wealth","财富"],["security","安全"],["entire","全部的，整个的"],["positive","积极的，正面的"],["rarely","很少"],["reflect","反映；反思"],["contact","联系，接触"],["hesitate","犹豫"],["permit","允许；许可证"],["rapid","迅速的"],["colleague","同事"],["conclude","推断；结束"],["host","主持人；主办"],["version","版本"],["accommodation","住处；适应"],["possess","拥有"],["collection","收集"],["survive","幸存"],["feature","特色；容貌；特征"],["appreciate","感激；欣赏"],["embarrass","使尴尬"],["profit","利润；利益；获利"],["ancient","古老的"],["historical","历史的"],["victim","受害者"],["broaden","扩大；变宽"],["plastic","塑料；可塑的"],["primary","首要的，初级的"],["reaction","反应"],["represent","代表；展示"],["response","反应；响应"],["surround","包围"],["average","平均的"],["smooth","使顺利；光滑的"],["cast","投射；掷"],["chemical","化学的；化学品"],["prison","监狱"],["purchase","购买"],["straight","直的；直接地"],["switch","转换，切换"],["treatment","对待；治疗"],["aware","意识到的"],["narrow","狭窄的；变窄"],["hire","雇请"],["shoulder","肩膀；肩负"],["content","内容；满意的"],["contribute","贡献；促成"],["concept","概念"],["concert","音乐会"],["conflict","冲突，矛盾"],["decade","十年"],["sincere","真诚的"],["release","释放"],["constant","持续的，恒定的"],["conduct","实施"],["overcome","克服"],["recycle","循环"],["translate","翻译"],["fond","喜欢的"],["grateful","感激的"],["guard","保卫；看守"],["motivate","激发，促动"],["pause","停顿；暂停"],["celebrate","庆祝"],["trick","欺骗；计谋"],["anxiety","焦虑"],["debate","辩论；争论"],["delay","拖延，耽搁"],["deserve","值得；应得"],["schedule","日程表；安排"],["specific","特定的；具体的"],["concentrate","集中，专心于"],["quit","放弃，辞去"],["stare","凝视"],["sympathy","同情"],["alternative","可供选择的事物"],["analyse / analyze","分析"],["ancestor","祖宗"],["aspect","方面"],["disability","缺陷，残疾"],["admire","钦佩；羡慕"],["adolescent","青少年"],["faithfully","忠实地"],["previous","先前的"],["reliable","可靠的"],["legal","合法的；法律的"],["compete","比赛；竞争"],["symbol","象征"],["trap","陷阱"],["apologise / apologize","道歉"],["mistaken","错误的"],["vehicle","车辆；交通工具"],["brief","简短的"],["sharp","锋利的；敏锐的"],["ordinary","普通的，平常的"],["absorb","吸收；吸引"],["ceremony","仪式"],["maintain","维持；保养"],["consequence","后果"],["citizen","市民，公民"],["violence","暴力"],["bid","出价；投标"],["bitter","苦的；痛苦的"],["shame","羞愧"],["bury","埋葬"],["accurate","精确的"],["adapt","适应；改编"],["regardless","不顾"],["commercial","商业的"],["confidence","信心"],["amaze","使惊奇"],["amuse","娱乐"],["attach","依附；附上"],["typical","典型的"],["negative","负面的，消极的"],["species","物种；种类"],["occasion","场合；时机"],["cautious","小心谨慎的"],["engage","参与；雇佣"],["expose","暴露；揭露"],["political","政治的"],["convenient","方便的"],["assess","评定；评估"],["astonish","使惊讶"],["guarantee","保证，担保"],["decline","下降；谢绝"],["background","背景"],["mysterious","神秘的"],["block","街区；阻塞"],["emergency","紧急情况"],["sink","下沉"],["abandon","抛弃，放弃"],["adjust","调节；适应"],["capital","首都；资本"],["charm","魅力"],["evaluate","评估，评价"],["exploit","利用，开发"],["poison","毒害"],["migrate","迁移；迁徙"],["current","当前的；水流"],["combine","使)结合"],["sweep","打扫；席卷"],["trade","贸易；交换"],["appointment","约会；任命"],["guilty","内疚的；有罪的"],["moral","道德的"],["wander","漫步，闲逛"],["charity","慈善；施舍"],["jog","慢跑"],["ensure","确保"],["poverty","贫困"],["precise","精确的"],["conservation","保护，保存"],["consult","咨询；请教"],["crime","罪行"],["complex","复杂的"],["forbid","禁止"],["federal","联邦的"],["gap","缺口；差距"],["apparent","明显的；表面的"],["unexpected","意料之外的"],["unwilling","不愿意的"],["habitat","栖息地"],["retire","退休"],["defend","防卫；辩护"],["withdraw","撤回，退出"],["participate","参与"],["enable","使能够"],["accompany","陪伴"],["chief","主要的；首领"],["explode","爆炸"],["precious","珍贵的"],["register","注册；登记"],["remark","评论"],["curiosity","好奇心"],["theory","理论"],["thick","厚的"],["affordable","支付得起的"],["atmosphere","大气；氛围"],["household","家庭"],["humour","幽默"],["whisper","耳语；私语"],["wipe","擦"],["optimistic","乐观的"],["significant","重要的，显著的"],["region","地区"],["addiction","上瘾"],["facility","设施"],["recall","回忆"],["remote","遥远的，偏僻的"],["resist","抵抗，抗拒"],["tax","税"],["fascinate","使入迷"],["ambition","雄心"],["appeal","呼吁；吸引"],["associate","联系；交往"],["declare","宣布，声明"],["minor","次要的"],["severe","严重的"],["slip","滑倒；溜走"],["academic","学术的"],["pile","堆；大量"],["pirate","海盗；盗版者"],["chain","链条；一连串"],["essential","必不可少的"],["psychology","心理学"],["reserve","预定；保留；保护区"],["resort","度假胜地"],["consist","由…组成；在于"],["contest","竞赛"],["command","命令；获得"],["comprehension","理解"],["tough","艰难的；棘手的"],["trend","趋势"],["assignment","任务；分配"],["assistant","助手"],["bargain","便宜货；讨价还价"],["destination","目的地"],["adopt","采用；收养"],["cheat","欺骗；骗子"],["cheque","支票"],["preserve","保护；保存"],["propose","计划；提议；求婚"],["manufacture","制造"],["crisis","危机"],["confirm","确认，证实"],["foundation","基础；基金会"],["appropriate","合适的"],["approve","赞成；批准"],["astronaut","宇航员"],["grant","授予；认为"],["routine","常规的；例行公事"],["impractical","不切实际的"],["distinguish","区分，辨别"],["vital","至关重要的"],["absence","缺席；缺乏"],["peak","山峰；顶端"],["temporary","暂时的"],["architect","建筑师"],["universal","普遍的"],["grasp","抓住；理解"],["decrease","降低"],["beneficial","有益的"],["define","定义"],["vast","广阔的"],["witness","目击；证人"],["wrap","包；裹"],["candidate","候选人"],["affair","事件"],["acquire","获得；学到"],["certificate","证书"],["champion","冠军；保卫"],["estimate","估计"],["exhausted","精疲力竭的"],["refresh","恢复精神"],["contract","合同；订合同"],["critical","批评的；决定性的"],["civil","公民的；国内的"],["compose","组成；作曲；创作"],["splendid","极好的"],["strike","打；罢工"],["threaten","威胁"],["tragedy","悲剧"],["transform","使改观，转变"],["trial","试验；审讯"],["fantasy","幻想"],["fetch","取来"],["frequently","频繁地"],["glance","扫视；一瞥"],["assume","假定；承担"],["uncertain","不确定的"],["urban","城市的"],["harbour","港口"],["harmony","和谐"],["identify","识别；鉴定"],["impact","影响"],["distinct","明显的，独特的"],["scratch","抓"],["burst","爆发"],["cancel","取消"],["skip","跳过"],["pedestrian","路人"],["peer","同辈；凝视"],["casual","随意的"],["erupt","喷发"],["principle","原则"],["loose","松散的"],["correspond","对应"],["advocate","提倡"],["ashamed","惭愧的"],["automatic","自动的"],["decorate","装饰"],["rough","粗糙的，粗略的"],["honourable / honorable","光荣的"],["illegal","非法的"],["negotiate","协商"],["vivid","生动的"],["scan","扫描；浏览"],["sculpture","雕塑"],["selfish","自私的"],["burden","负担；使负重"],["absolute","绝对的"],["accomplish","完成；实现"],["accuse","控告；指责"],["administration","管理；行政"],["perception","观念；洞察力"],["radiation","辐射"],["reject","驳回，摒弃"],["mild","温和的；轻微的"],["symptom","症状；征兆"],["treasure","财富"],["tuition","学费"],["foster","培养；收养的"],["freezing","冰冻的"],["annual","每年的"],["antique","古董；古老的"],["arise","出现，产生"],["unemployment","失业"],["gravity","重力"],["rural","农村的"],["scare","受惊吓"],["murder","谋杀"],["horizon","地平线"],["noble","高贵的"],["desperate","绝望的"],["weaken","削弱"],["seize","抓住"],["acknowledge","承认"],["payment","支付；报酬"],["priority","优先"],["procedure","程序"],["quote","引用；引述"],["luxury","奢侈；豪华"],["contemporary","当代的"],["cooperate","合作"],["classify","分类"],["tight","紧的"],["tropical","热带的"],["fierce","激烈的"],["flexible","灵活的"],["fortunate","幸运的"],["giant","巨大的"],["aggressive","好斗的；上进的"],["anniversary","周年纪念"],["undoubtedly","无疑地"],["deed","行为"],["barely","仅仅，勉强"],["rival","对手；竞争"],["salary","薪水"],["hurricane","飓风"],["demonstrate","证明；演示"],["beneath","在…之下"],["brilliant","杰出的；卓越的"],["shortcoming","缺点"],["optional","可选择的"],["paradise","天堂"],["emphasis","强调；重点"],["calculate","计算"],["permanent","永久的"],["capture","捕获；占领"],["justice","正义"],["keen","敏锐的，热切的"],["pure","纯粹的"],["pursue","追求"],["reform","改革"],["legend","传奇"],["clarify","澄清"],["subordinate","次要的；下级的"],["swallow","吞下"],["transfer","转移"],["trigger","触发"],["fasten","系牢；固定"],["fulfill","完成"],["arrest","逮捕"],["unbelievable","难以置信的"],["unconscious","无意识的"],["unforgettable","难忘的"],["valid","有效的"],["deadline","截止时间"],["restore","恢复；修复"],["reveal","揭示；显示"],["immigrant","移民"],["opponent","对手"],["shrink","收缩；缩水"],["skeptical","怀疑的"],["abstract","抽象的"],["abuse","滥用；虐待"],["accumulate","积累"],["accustom","使习惯"],["pesticide","杀虫剂"],["capability","能力"],["cater","迎合"],["fancy","想象；喜欢"],["polish","擦亮；完善"],["portable","手提式的"],["protest","抗议"],["stimulus","刺激"],["summarize","概述"],["superior","较高的；上层的"],["surgery","外科手术"],["thoroughly","彻底地"],["trail","小径"],["tremble","发抖"],["format","格式；设计"],["fundamental","根本的；基础"],["anonymous","匿名的"],["appetite","食欲；嗜好"],["arouse","引起"],["awful","糟糕的"],["vain","徒劳的"],["restless","不安的"],["reverse","逆转；相反的"],["moderate","适度的"],["offence","冒犯；犯罪"],["delicate","脆弱的；精细的"],["wag","摇摆"],["breakthrough","突破"],["reluctant","不情愿的"],["accent","口音；重音"],["adequate","足够的"],["pavement","人行道"],["prejudice","偏见"],["prosperity","繁荣"],["resemble","与…相似"],["resolution","决心；解决"],["mature","成熟的"],["latter","后者的"],["lean","倚靠；倾斜"],["compound","化合物"],["tolerate","忍受，容忍"],["transmission","传输"],["approximately","大约地"],["artificial","人造的"],["athletic","运动的；健壮的"],["awkward","尴尬的，笨拙的"],["damp","潮湿的"],["dash","猛冲"],["restrict","限制"],["sacrifice","牺牲"],["minimize","使减到最低"],["miracle","奇迹"],["multiple","多种多样的"],["neglect","疏忽，忽略"],["notorious","臭名昭著的"],["degrade","降解；退化"],["depart","离开"],["accelerate","加速"],["adore","爱慕；崇拜"],["perspective","看法"],["category","种类"],["exclude","排除"],["pregnant","怀孕的"],["random","随机的"],["rebel","造反；造反者"],["leak","泄露；渗出"],["starve","挨饿"],["sting","叮"],["sustainable","可持续的"],["temptation","诱惑"],["tiresome","令人厌倦的"],["tourism","旅游业"],["transition","过渡；转变"]];
+
+// 一次性内置 642 词合并：只追加缺失词，保留用户已有的错词本状态与自定义词
+const BULK_FLAG = 'gaokao_vocab_bulk_v642_v1';
+function bulkImportOnce(){
+  let done = false;
+  try{ done = localStorage.getItem(BULK_FLAG) === '1'; }catch(e){}
+  if(done) return;
+  const existing = new Set(data.map(w=>w.word.trim().toLowerCase()));
+  const aliases = new Set();
+  data.forEach(w=>w.word.split(/\s*\/\s*/).forEach(p=>aliases.add(p.trim().toLowerCase())));
+  BULK_WORDS.forEach(item=>{
+    const key = item[0].toLowerCase();
+    const parts = item[0].split(/\s*\/\s*/).map(p=>p.trim().toLowerCase());
+    if(existing.has(key) || parts.some(p=>aliases.has(p))) return;
+    existing.add(key); parts.forEach(p=>aliases.add(p));
+    data.push({ id:generateId(), index:nextIndex(), word:item[0], meaning:item[1],
+      inWrongBook:false, wrongBookStreak:0, wrongOrder:0 });
+  });
+  saveData();
+  try{ localStorage.setItem(BULK_FLAG, '1'); }catch(e){}
+}
+bulkImportOnce();
+
+const EXTRA_WORDS = [["lawn","草坪；草地"],["garden","花园，菜园 v.从事园艺"],["neighbor","邻居"],["look after","短语：照顾，照料"],["be proud of","短语：为……感到自豪"],["spend time doing sth.","短语：花费时间做某事"],["bother","使烦恼，打扰 n.麻烦"],["sidewalk","人行道"],["tile","瓷砖，瓦片 v.铺瓷砖"],["stain","弄脏，玷污 n.污渍"],["different","不同的"],["wear","穿；磨损 n.磨损"],["brilliant","绝妙的；明亮的"],["paint","刷漆，绘画 n.油漆；颜料"],["hardware","五金器具；硬件"],["light","明亮的；轻的 n.光 v.点亮"],["grey","灰色的 n.灰色"],["bought","买（buy过去式/过去分词）"],["rush","冲，匆忙 n.匆忙"],["get out","短语：拿出；出去"],["paint roller","油漆滚筒"],["in a short time","短语：很快，短时间内"],["complete","完整的 v.完成"],["dry  v.（","使）变干 adj.干燥的"],["brand new","短语：全新的"],["success","成功"],["unexpected","出乎意料的"],["result","结果 v.导致"],["trouble","使苦恼 n.麻烦"],["dirty","脏的 v.弄脏"],["travel","旅行"],["through","穿过，通过"],["desert","沙漠 adj.沙漠的"],["come across","短语：偶然遇见"],["spring","泉水；春天 v.跳跃"],["clear","清澈的；清晰的 v.清除"],["fill","填满，装满"],["leather","皮革 adj.皮革制的"],["container","容器"],["bring","带来"],["elder","长者，长辈 adj.年长的"],["journey","旅行，旅程"],["present","赠送；呈现 adj.目前的 n.礼物"],["deep","深的 adv.深深地"],["heart","心；内心"],["left","离开（leave过去式/过去分词） adj.左边的 n.左边"],["spit","吐，吐出"],["awful","糟糕的，极坏的"],["apparent","明显的"],["fresh","新鲜的"],["appreciation","感激；欣赏"],["pretend","假装"],["replied","回答，回复（reply过去式/过去分词）"],["taste","品尝 n.味道"],["simply","仅仅；简单地"],["kindness","善良，好意"],["receive","收到，接收"],["gift","礼物；天赋"],["pipe","管子；烟斗"],["diamond","钻石"],["necklace","项链"],["proper","恰当的，合适的"],["response","回应，答复"],["remember","记得，记住"],["start doing sth.","短语：开始做某事"],["collect litter","短语：收集垃圾"],["get tired of doing","短语：厌倦做某事"],["nearby","在附近 adj.附近的"],["realize","意识到；实现"],["pick it up","短语：把它捡起"],["near","靠近 adj.近的 adv.在附近"],["forest","森林"],["walk sb.","短语：陪某人走路；遛（动物）"],["so adj. that","句子 句型：如此……以至于……"],["clean up","短语：打扫干净，清理"],["trip","短途旅行"],["rubbish bag","垃圾袋"],["can","金属罐；罐头 modal v.能够"],["bottle","瓶子"],["broken glass","短语：碎玻璃"],["pick up","短语：捡起；学会"],["make sb. do sth.","句型：使某人做某事"],["environment","环境"],["recycle","回收利用"],["drop","丢弃；掉落 n.滴"],["understand","理解，明白"],["be known as","短语：作为……而出名"],["festival","节日"],["fall","落下；降临；跌倒 n.秋天；瀑布"],["lunar month","农历月"],["various","各种各样的"],["activity","活动"],["put up","短语：张贴；搭建；举起"],["decoration","装饰；装饰品"],["greet","问候；迎接"],["relative","亲戚，亲属 adj.相对的"],["reunion","团聚；重聚"],["pocket","口袋 adj.袖珍的"],["observe","庆祝；观察；遵守"],["tradition","传统"],["be welcomed with","短语：受到……的迎接"],["celebration","庆祝；庆典"],["town","城镇，市镇"],["firework","烟花；烟火"],["dragon","龙"],["lion","狮子"],["whether...or...","句型：无论……还是……"],["be born in","短语：出生于（某地/某时）"],["spell","拼写 n.一段时间；咒语"],["represent","代表；象征"],["combination","结合；组合"],["letter","字母；信件"],["pronounce","发音；宣告"],["distinct","明显的；截然不同的"],["be distinct from","短语：与……截然不同"],["suggest doing sth.","短语：建议做某事"],["simplify","简化；使简易"],["copy","抄写；复制 n.副本；拷贝"],["make sb. n./make sth.","句型：使某人/某物成为……"],["dictionary","词典，字典"],["appear","出现；似乎；显得"],["criticize","批评；指责"],["standard","标准的 n.标准；水准"],["reference","参考；查阅；提及"],["passionate","热情的；热烈的"],["learned","博学的；有学问的"],["extreme","极度的；极端的 n.极端"],["remarkable","显著的；非凡的"],["dynasty","王朝；朝代"],["shadow","阴影，影子 v.跟踪；遮蔽"],["popular","受欢迎的；流行的"],["quick","快的，迅速的 adv.迅速地"],["term","术语；学期；期限 v.把……称为"],["put on a show","短语：表演节目；演出"],["sore","疼痛的；酸痛的 n.痛处，伤口"],["wrist","手腕，腕关节"],["90 degree  n.90","度（常用复数 90 degrees）"],["shake","摇动；抖动；摇晃 (shake‑shook‑shaken)"],["a while","短语：一会儿，一段时间"],["backstage","在后台 adj.后台的"],["kangaroo","袋鼠"],["glad","高兴的，愉快的"],["develop","发展；培养；开发"],["find sth.","句型：发现某物……（处于某种状态）"],["without","没有；不"],["housework","家务劳动"],["difficulty","困难；难题"],["fridge","冰箱"],["skill","技能；技巧"],["teenager","青少年"],["noise","噪音；喧闹声"],["lively","活泼的；热闹的"],["loud","大声的；喧闹的 adv. 大声地"],["complain","抱怨；投诉"],["owner","主人；所有者"],["bill","账单；钞票"],["follow","跟随；遵循；听懂"],["share","分享；分担 n. 份额"],["leave a tip","短语：付小费"],["service","服务"],["custom","风俗，习俗；习惯 adj. 定制的"],["country","国家；乡村"],["eco-friendly","环保的"],["reduce","减少；降低"],["carbon","碳"],["footprint","足迹"],["common","常见的；普遍的；共同的"],["carry","携带；搬运；运送"],["luggage","行李（不可数）"],["items","物品；项目（item复数）"],["end up doing sth.","短语：最终做某事"],["half","一半 adj.一半的 adv.一半地"],["require","需要；要求"],["require sb. to do sth.","短语：要求某人做某事"],["require doing sth.","短语：需要被做（主动表被动）"],["requirement","要求；必要条件"],["necessity","必需品；必要性"],["necessary","必要的，必需的"],["necessarily","必定，必然"],["vacation","假期"],["plastic","塑料 adj.塑料的"],["tourist","游客，旅行者"],["pollute","污染"],["attraction","景点；吸引力"],["peace","和平；宁静"],["spot","地点；景点 v.发现"],["electricity","电；电能"],["pull","拉，拖"],["air conditioner","空调"],["plug","插头 v.插上（电源）"],["adapt","适应；改编"],["adapt to sth.","短语：适应某物"],["adapt to doing sth.","短语：适应做某事"],["step","步骤；脚步 v.迈步"],["take action","短语：采取行动"],["generation","一代；一代人"],["live on","短语：继续生存；靠……生活"],["dishes","菜肴；盘子（dish复数）"],["It is sth. that …","强调句型：正是……"],["foreign","外国的"],["take the place of","短语：取代，代替"],["supermarket","超市"],["prefer to do sth.","短语：更喜欢做某事"],["prefer A to B","短语：比起B更喜欢A"],["prefer doing sth.","短语：更喜欢做某事"],["finest","最好的（fine最高级）"],["wine","葡萄酒；果酒"],["oil","油；石油 v.上油"],["anyway","无论如何；而且"],["terrible","糟糕的；可怕的"],["import","进口；引入 n.进口商品"],["abroad","在国外；到国外"],["ancient","古代的；古老的"],["trade","贸易 v.交易；做买卖"],["main","主要的"],["an influence","一种影响"],["ingredient","原料；成分；因素"],["all over the world","短语：世界各地"],["certain","确定的；某种"],["weather","天气（不可数）"],["soil","土壤；泥土"],["rich","富有的；丰富的；肥沃的"],["graduate","毕业 n.毕业生"],["university","大学"],["continue doing sth.","短语：继续做同一件事"],["continue to do sth.","短语：接着去做另一件事"],["lives","生命；生活（life复数）v.居住（live三单）"],["lifelong","终身的，毕生的"],["doctor","医生；博士"],["illness","疾病"],["treatment","治疗；对待"],["prepare sth.","短语：准备某物"],["prepare for sth.","短语：为某事做准备"],["prepare to do","短语：准备去做"],["prepare sb. to do","短语：使某人准备好去做"],["opportunity","机会"],["independent","独立的"],["help sb. do sth.","短语：帮助某人做某事"],["stay +","句型：保持……（某种状态）"],["remain","仍然是；保持；剩余"],["be busy doing sth.","短语：忙于做某事"],["business","生意；商业；事务"],["be busy with sth.","短语：忙于某事"],["flat","平坦的；扁平的 n.公寓"],["flatmate","合租室友"],["flatten","使变平；打倒"],["flat screen","平板屏幕；平板设备"],["little-less-least","不规则变化：少的（修饰不可数名词）"],["few-fewer-fewest","不规则变化：少的（修饰可数名词）"],["modern","现代的"],["modern building","现代建筑"],["elevator","电梯（美式）"],["elevate","提升；抬高"],["gas line","输气管道（美）"],["gas station","加油站（美）"],["gas stove","燃气灶"],["pipeline","管道"],["petrol","汽油（英式）"],["petrol station","加油站（英）"],["block","街区；块 v.阻挡，堵塞"],["roadblock","路障"],["blocked","被堵塞的（block过去式/过去分词）"],["ask sb. for sth.","短语：向某人索要某物"],["ask sb. to do sth.","短语：要求某人做某事"],["It was the first time that sb. did","句型：这是某人第一次做某事（注：高考常用从句用过去完成时did/had done）"],["rent","租用；出租 n.租金"],["rental","租金；租赁 adj.租赁的"],["renter","租客，承租人"],["rent-free","免租金的"],["agreement","协议；同意"],["agree","同意"],["disagree","不同意"],["achieve","实现；达成"],["returning","返回；归还（return现在分词）"],["correct","正确的 v.纠正，改正"],["correctly","正确地"],["correction","改正；修正"],["incorrect","不正确的"],["be able to do sth.","短语：能够做某事"],["unable","不能的；无法的"],["enable","使能够；使成为可能"],["disable","使丧失能力；使失效"],["sentence","句子；判决 v.判决"],["complete sentence","完整句子"],["advice","建议（不可数）"],["advise","建议"],["advisor/adviser","顾问；指导老师"],["advertisement","广告"],["grammar","语法"],["satisfy","使满意；满足"],["satisfaction","满意；满足"],["be satisfied with","短语：对……感到满意"],["unsatisfied","不满意的"],["rule","规则 v.统治；管理"],["ruler","尺子；统治者"],["home rule","地方自治"],["practice doing sth.","短语：练习做某事"],["practical","实际的；实用的"],["practically","实际上；几乎"],["happen","发生"],["happen to do sth.","短语：碰巧做某事"],["answer","回答；回应 n.答案"],["answer back","短语：顶嘴"],["answer for","短语：对……负责"],["effect","影响；效果"],["affect","影响；使感动"],["effective","有效的"],["effectively","有效地"],["side effect","副作用"],["cause and effect","短语：因果"],["famous","著名的"],["infamous","臭名昭著的"],["be famous for","短语：因……而出名"],["be famous as","短语：作为……而出名"],["count","数；重要 n.计数"],["countless","无数的"],["counter","柜台；计算器"],["count down","短语：倒计时"],["count on","短语：指望；依靠"],["stop doing sth.","短语：停止做某事"],["stop to do sth.","短语：停下来去做另一件事"],["stop sb. from","短语：阻止某人……"],["experiment","实验 v.做实验"],["do an experiment","短语：做实验"],["be asleep","睡着的"],["sleepy","困倦的，瞌睡的"],["alive","活着的；有活力的"],["science","科学"],["scientist","科学家"],["believe","相信；认为"],["believable","可信的"],["unbelievable","难以置信的"],["believer","信徒；相信者"],["believe it or not","短语：信不信由你"],["advise sb. to do sth.","短语：建议某人做某事"],["give sb. advice","短语：给某人提建议"],["take one's advice","短语：听从某人的建议"]];
+// 一次性追加本次提取的 337 条词汇（自动跳过词库中已有词）
+const EXTRA_FLAG = 'gaokao_vocab_extra_v337_v1';
+function extraImportOnce(){
+  let done = false;
+  try{ done = localStorage.getItem(EXTRA_FLAG) === '1'; }catch(e){}
+  if(done) return;
+  const aliases = new Set();
+  const addAlias = w => w.toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean).forEach(a=>aliases.add(a));
+  data.forEach(w=>addAlias(w.word));
+  EXTRA_WORDS.forEach(item=>{
+    const parts = item[0].toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean);
+    if(parts.some(p=>aliases.has(p))) return;
+    parts.forEach(p=>aliases.add(p));
+    data.push({ id:generateId(), index:nextIndex(), word:item[0], meaning:item[1],
+      inWrongBook:false, wrongBookStreak:0, wrongOrder:0 });
+  });
+  saveData();
+  try{ localStorage.setItem(EXTRA_FLAG, '1'); }catch(e){}
+}
+extraImportOnce();
+
+const MORE_WORDS = [["earthquake","地震"],["quake","震动；地震"],["hit-hit-hit","不规则动词：击打；袭击"],["hit the area","短语：袭击该地区"],["damage","损害，毁坏"],["cause damage to","短语：对……造成损害"],["environmental damage","短语：环境破坏"],["soldier","士兵"],["go for a soldier","短语：去参军"],["dig-dug-dug","不规则动词：挖，掘"],["dig out","短语：挖出；发掘"],["dig a hole","短语：挖洞"],["trap-trapped-trapped","困住；设陷阱 n.陷阱"],["be trapped in","短语：被困在……"],["set a trap","短语：设陷阱"],["bury-buried-buried","埋葬；掩埋"],["be buried in","短语：埋头于；被埋在"],["provide","提供"],["provide sb. with sth.","短语：给某人提供某物"],["provide sth. for sb.","短语：给某人提供某物"],["medical","医学的；医疗的"],["medically","医学上；医疗方面"],["medical care","短语：医疗护理"],["medical team","短语：医疗队"],["shelter","避难所；庇护 v.庇护"],["a homeless shelter","短语：收容所"],["survivor","幸存者"],["survive","幸存；生还"],["survival","幸存；生存"],["survival skill","短语：生存技能"],["destroy-destroyed-destroyed","摧毁，毁灭"],["destruction","破坏，毁灭"],["completely destroy","短语：彻底摧毁"],["truck","卡车"],["by truck","短语：乘卡车；用卡车运送"],["truck driver","短语：卡车司机"],["breathe in/out","短语：吸气/呼气"],["breath","呼吸（名词）"],["deep breath","短语：深呼吸"],["support","支持；供养"],["supporter","支持者"],["support one’s family","短语：养家糊口"],["positive","积极的；正面的"],["positivity","积极性；正面性"],["negative","消极的；负面的"],["positive effect","短语：积极影响"],["government","政府"],["governor","州长；管理者"],["the local government","短语：当地政府"],["tireless","不知疲倦的"],["tired","疲惫的"],["tire  v.（","使）疲劳 n.轮胎"],["wise","明智的"],["wisely","明智地"],["wisdom","智慧"],["unwise","不明智的"],["a wise decision","短语：明智的决定"],["ruin","毁坏 n.废墟；毁灭"],["financial ruin","短语：破产；财务崩溃"],["in ruin","短语：成为废墟"],["million","百万"],["one in a million","短语：百里挑一"],["improvement","改善，改进"],["improve","改善，提高"],["make an improvement","短语：做出改进"],["transportation","交通；运输"],["transporter","运输者；运输车"],["transport","运输 n.运输"],["industry","工业；行业"],["heavy industry","短语：重工业"],["light industry","短语：轻工业"],["industrial revolution","短语：工业革命"],["prove-proved-proven","证明；证实"],["prove sb. wrong","短语：证明某人是错的"],["proof","证据"],["unify","统一"],["unit","单元；单位"],["unity","团结；统一"],["united","联合的；统一的"],["unify the country","短语：统一国家"],["heat","热量；高温 v.加热"],["heater","加热器；暖气设备"],["heat up","短语：加热；升温"],["generate heat","短语：产生热量"],["crop","庄稼，作物 v.收获；种植"],["grow crop","短语：种植庄稼"],["rice","水稻；大米"],["fried rice","炒饭"],["rice field","稻田"],["a bowl of rice","短语：一碗米饭"],["plenty","大量；充裕 pron.充足"],["plentiful","大量的；充足的"],["live in plenty","短语：生活富足"],["there is plenty of time","句型：时间很充裕"],["period","时期；阶段；课时"],["a period of time","短语：一段时间"],["over a long period","短语：长期以来"],["bean","豆；豆子"],["coffee bean","咖啡豆"],["full of beans","短语：精力充沛的"],["spill the beans","短语：泄密"],["neck","脖子；颈部"],["neck and neck","短语：并驾齐驱"],["area","地区；区域；面积"],["in the rural/urban area","短语：在农村/城市地区"],["local area","短语：当地；本地区"],["region","地区；区域"],["regional","地区的；区域的"],["regionally","在区域上；局部地"],["mountain region","山区"],["regional differences","地区差异"],["in this region","短语：在该地区"],["technology","科技；技术"],["technological","技术的；科技的"],["technique","技巧；工艺；方法"],["technical","技术上的；专业的"],["high technology","高科技"],["information technology","信息技术"],["pioneer","先锋；开拓者 v.开创；开拓"],["a pioneer in/of","短语：……方面的先驱"],["pioneer a new field","短语：开辟新领域"],["clerk","职员；店员（个体员工）"],["staff","全体员工（集合名词）"],["bank clerk","银行职员"],["sales clerk","售货员"],["imitate","模仿；仿效"],["imitate sb.","短语：模仿某人"],["imitate one’s voice","短语：模仿某人的声音"],["contest","比赛；竞赛 v.争夺；争辩"],["enter a contest","短语：参加比赛"],["speech contest","演讲比赛"],["match","比赛（侧重体力对抗）；火柴 v.匹配"],["competition","比赛（通用）；竞争"],["character","角色；文字；性格"],["main character","主角"],["Chinese character","汉字"],["line","线；队伍；台词 v.排队"],["in line","短语：排队"],["the bottom line","短语：底线"],["throw","扔；投；举办"],["throw away","短语：扔掉；抛弃"],["throw a party","短语：举办派对"],["interview","采访；面试"],["job interview","求职面试"],["interview sb. about sth.","短语：就某事采访某人"],["slight","轻微的；微小的"],["a slight change","短语：微小的变化"],["light","轻微的；轻的；明亮的"],["impact","影响；冲击"],["have an impact on","短语：对……产生影响"],["environmental impact","环境影响"],["a lasting impact","短语：持久的影响"],["genius","天才；天赋"],["a genius for","短语：有……方面的天赋"],["a child genius","神童"],["disappoint","使失望"],["be disappointed at","短语：对……感到失望"],["to one’s disappointment","短语：令某人失望的是"],["pale","苍白的；浅色的"],["pale face","苍白的脸"],["turn pale","短语：变得苍白"],["pale blue","淡蓝色"],["instrument","仪器；工具；乐器"],["musical instrument","乐器"],["play an instrument","短语：演奏乐器"],["surgical instrument","手术器械"],["memorize","记住；熟记"],["key","钥匙；关键；答案 adj.关键的"],["struggle","奋斗；努力；挣扎"],["repetition","重复；反复"],["vocabulary","词汇；词汇量"],["goal","目标；球门（goals复数）"],["set","设定；放置；布置 n.一套"],["frustrate","使沮丧；使受挫"],["aim","目标 v.旨在；瞄准"],["long-term memory","长期记忆"],["stress","压力 v.强调；施压"],["note","笔记；便条 v.记录；注意"],["recall","回忆；回想"],["active","积极的；主动的"],["list","清单；列表 v.列出"],["remember","记得；记住"],["review","复习；回顾"],["strengthen","加强；巩固"],["strength","力量；优势"],["passive","被动的"],["spaced","间隔开的"],["fade","逐渐消失；褪色"],["regular","定期的；常规的"],["schedule","计划表；日程 v.安排"],["tip","技巧；提示（tips复数）"],["waste","浪费 n.废物 adj.废弃的"],["confident","自信的"],["special","特别的；专门的"],["dumpling","饺子（dumplings 复数）"],["vegetable","蔬菜"],["coin","硬币"],["keep...from...","短语：阻止……；使…… 免受"],["stick","棍子 v. 粘贴；刺"],["sticky","粘的；粘性的"],["country","国家；乡村（不侧重风景）"],["countryside","乡下，农村（侧重乡村风光）"],["lose-lost-lost","不规则动词：丢失；失去"],["population","人口"],["popular","受欢迎的；流行的"],["popularity","普及；人气；受欢迎程度"],["grow-grew-grown","不规则动词：生长；种植；增长"],["classic","经典的 n.经典作品"],["classical","古典的"],["image","形象；图像；影像"],["traffic jams","交通堵塞"],["crime","罪行；犯罪"],["criminal","罪犯 adj.犯罪的"],["since","自从 conj.自从；因为 adv.从那以后"],["cause","导致；引起 n.原因；事业"],["during the course of","短语：在……过程中（原文cause为录入笔误）"],["rural","农村的"],["urban","城市的"],["village","村庄"],["crowd","人群 v.挤满"],["crowded","拥挤的"],["cross","穿过；交叉 n.十字；十字路口"],["crossing","人行横道；交叉口"],["across","穿过；横过"],["careful","小心的；仔细的"],["carefully","小心地；仔细地"],["careless","粗心的"],["carefulness","细心；慎重"],["tell-told-told","不规则动词：告诉；辨别"],["accident","事故；意外"],["accidental","意外的；偶然的"],["blind","失明的；盲的 v.使失明"],["blindness","失明；盲目"],["corner","角落；拐角 v.使陷入困境"],["death","死亡"],["die","死亡"],["dying","垂死的；即将消亡的"],["deadly","致命的 adv.极其"],["dead","死的；无生命的"],["hurt","使受伤；伤害 adj.受伤的"],["hurtful","伤人的"],["hurtfully","伤人地"],["unfortunate","不幸的"],["unfortunately","不幸地"],["fortune","运气；财富"],["fortunate","幸运的"],["unmatched","无与伦比的；未配对的"],["matchbox","火柴盒"],["lighter","打火机"],["light-lit-lit","不规则动词：点亮；照亮"],["alarm","警报；闹钟 v.使惊恐"],["alarming","令人担忧的"],["protect","保护"],["protection","保护"],["protective","防护的；保护的"],["protector","保护者；防护装置"],["ought to","情态短语：应该"],["ought not to","情态短语：不应该"],["practice","练习；实践"],["practical","实际的；实用的"],["practically","实际上；几乎"],["dark","黑暗的 n.黑暗"],["darkness","黑暗"],["darken  v.（","使）变暗"],["smoke","烟 v.吸烟；冒烟"],["smoky","冒烟的；烟雾弥漫的"],["warn","警告"],["warning","警告 adj.警示的"],["immediately","立刻，马上"],["immediate","立即的；直接的"],["back","背部；后面 adv.回来 adj.后面的 v.支持"],["take care","短语：小心；保重"],["reduce","减少"],["reduction","减少；降低"],["fire department","消防部门"],["firefighter","消防员"],["fireman","消防员"],["pet","宠物 v.抚摸"],["catch-caught-caught","不规则动词：抓住；赶上"],["perform","表演；执行"],["performer","表演者"],["performance","表演；表现"],["rescue","营救，救援"],["rescuer","救援者"],["safe","安全的"],["safety","安全"],["safely","安全地"],["unsafe","不安全的"],["battery","电池"],["test","测试；检验"],["testing","测试；检验"],["button","按钮；纽扣 v.扣紧"],["last","持续 adj.最后的 adv.最后"],["lasting","持久的"],["lastly","最后"],["chance","机会；可能性"],["avoid","避免"],["unavoidable","不可避免的"],["working properly","短语：正常运转"],["tool","工具"],["constant","持续的；不断的"],["constantly","不断地；经常地"],["change","改变；变化"],["exchange","交换；交流"],["out of date","短语：过时的"],["outdated","过时的"],["update","更新"],["by the time","连词短语：到……的时候"],["information","信息（不可数）"],["inform","通知；告知"],["misinformation","错误信息"],["be afraid of","短语：害怕……"],["unafraid","不害怕的"],["after all","短语：毕竟；终究"],["appear","出现；显得"],["appearance","外貌；出现"],["disappear","消失"],["development","发展；开发"],["develop","发展；培养"],["developer","开发者；开发商"],["developed","发达的"],["developing","发展中的"],["imagine","想象"],["imagination","想象力"],["create","创造"],["creation","创造；作品"],["creative","有创造力的"],["creativity","创造力"],["creator","创造者"],["restaurant","餐馆；饭店"],["concert","音乐会"],["attend","出席；参加；照料"],["normal","正常的 n.常态"],["normally","正常地"],["abnormal","不正常的"],["norm","规范；标准"],["gradually","逐渐地"],["gradual","逐渐的"],["get/be used to doing sth.","短语：习惯于做某事"],["used to do sth.","短语：过去常常做某事"],["prepare","准备"],["preparation","准备"],["prepared","准备好的"],["fear","害怕；恐惧"],["fearful","可怕的；担心的"],["fearless","无畏的"],["control","控制"],["controller","控制器；负责人"],["uncontrolled","不受控制的"],["accept","接受"],["acceptance","接受；认可"],["acceptable","可接受的"],["accepted","公认的；被接受的"],["unacceptable","不能接受的"],["TV program","电视节目"],["programmer","程序员"],["bring together","短语：使相聚；汇集"],["invent","发明"],["invention","发明；发明物"],["inventor","发明家"],["sing-sang-sung","不规则动词：唱歌"],["hear sb. doing sth.","句型：听见某人正在做某事"],["hear sth. done","句型：听见某物被……"],["grade","年级；分数 v.分级"],["upgrade","升级"],["lesson","课；教训"],["become interested in doing sth.","短语：变得对做某事感兴趣"],["record","记录；录制 n.记录；唱片"],["recorder","录音机；记录仪"],["break a record","短语：打破纪录"],["shall do sth.","句型：将要做某事（多用于I/We后）"],["try to do sth.","短语：尽力/设法去做某事"],["try doing sth.","短语：尝试做某事（试一试方法）"],["exactly","恰好；正是"],["exact","准确的；精确的"]];
+// 一次性追加本次提取的 375 条词汇（自动跳过词库中已有词）
+const MORE_FLAG = 'gaokao_vocab_more_v375_v1';
+function moreImportOnce(){
+  let done = false;
+  try{ done = localStorage.getItem(MORE_FLAG) === '1'; }catch(e){}
+  if(done) return;
+  const aliases = new Set();
+  const addAlias = w => w.toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean).forEach(a=>aliases.add(a));
+  data.forEach(w=>addAlias(w.word));
+  MORE_WORDS.forEach(item=>{
+    const parts = item[0].toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean);
+    if(parts.some(p=>aliases.has(p))) return;
+    parts.forEach(p=>aliases.add(p));
+    data.push({ id:generateId(), index:nextIndex(), word:item[0], meaning:item[1],
+      inWrongBook:false, wrongBookStreak:0, wrongOrder:0 });
+  });
+  saveData();
+  try{ localStorage.setItem(MORE_FLAG, '1'); }catch(e){}
+}
+moreImportOnce();
+
+const EVENMORE_WORDS = [["consider","考虑；认为"],["consideration","考虑；体谅"],["considerate","体贴的；考虑周到的"],["choice","选择"],["choose","选择 (chose-chosen)"],["flight","航班；飞行"],["fly-flew-flown","不规则动词：飞；放飞"],["local","当地的；本地的"],["locally","在本地；当地"],["airport","机场"],["fast","快的 adv.迅速地"],["fasten","系紧；扣牢"],["fast food","快餐"],["snack","小吃；零食"],["reuse","再使用；重复利用"],["plastic","塑料 adj.塑料的"],["plastic-free","无塑料的"],["necessary","必要的"],["necessarily","必定，必然"],["necessity","必需品；必要性"],["harmful","有害的"],["harm","伤害；损害"],["harmless","无害的"],["harmfulness","危害性"],["turn off","短语：关掉"],["tap","轻敲 n.水龙头；轻拍"],["tap the table","短语：轻敲桌子"],["habit","习惯"],["length","长度"],["lengthen  v.（","使）变长；延长"],["pay attention to","短语：注意"],["shower","淋浴；阵雨 v.淋浴"],["shower room","淋浴室"],["borrow","借入"],["borrower","借用人"],["lend","借出 (lent‑lent)"],["favorite","最喜欢的 n.最爱"],["favor","喜爱；支持"],["prefer","更喜欢"],["bathroom","浴室；卫生间"],["bath","洗澡"],["bathe","沐浴；冲洗"],["sunbathe","晒日光浴"],["bathhouse","澡堂"],["backpack","背包"],["pack","打包 n.包；一组"],["connect","连接"],["connect to/with","短语：与……连接"],["novel","小说 adj.新颖的"],["joy","喜悦，快乐"],["joyful","快乐的"],["joyless","无趣的；不快乐的"],["enjoy","享受；喜欢"],["enjoyment","乐趣；享受"],["bookstore","书店"],["independent bookstore","独立书店"],["chain bookstore","连锁书店"],["blog","博客 v.写博客"],["track","轨道；跑道；踪迹 v.追踪"],["comment","评论"],["criticism","批评；评论"],["think‑thought‑thought","不规则动词：思考；认为"],["thought","想法；思想"],["play an important role in","短语：在……中起重要作用"],["play a part in","短语：在……中起作用；参与"],["role","角色；作用"],["importance","重要性"],["confidence","信心"],["brain","大脑；头脑"],["brainless","愚笨的；没头脑的"],["brainstorm","头脑风暴"],["enough","足够的/地；足够"],["It is enough to do sth.","句型：做某事就足够了"],["more than enough","短语：绰绰有余"],["not enough","短语：不够"],["hard","困难的；坚硬的 adv.努力地；猛烈地"],["hardly","几乎不"],["harden  v.（","使）变硬；（使）变艰难"],["hardness","硬度；艰难"],["hardworking","勤奋的"],["work hard","短语：努力学习/工作"],["child","孩子"],["children","孩子们（child复数）"],["childhood","童年"],["childless","无子女的"],["forget-forgot-forgotten","不规则动词：忘记"],["forgettable","容易被忘记的"],["unforgettable","难忘的"],["forget to do sth.","短语：忘记要去做某事"],["forget doing sth.","短语：忘记做过某事"],["mistake","错误 v.弄错"],["make a mistake","短语：犯错误"],["by mistake","短语：错误地"],["mistake A for B","短语：把A误认为B"],["general","总的；普遍的"],["generally","通常；大体上"],["general knowledge","短语：常识"],["help sb. do sth.","短语：帮助某人做某事"],["help sb. with sth.","短语：在某方面帮助某人"],["helpful","有帮助的；helpless  adj.无助的"],["can’t help doing sth.","短语：忍不住做某事"],["routine","常规；惯例 adj.常规的"],["routinely","例行地；常规地"],["daily routine","短语：日常作息"],["break the routine","短语：打破常规"],["relax","放松"],["relaxed  adj.（","人）感到放松的"],["relaxing  adj.（","事物）令人放松的"],["relax oneself","短语：放松自己"],["late","迟到的；晚的 adv.晚；迟"],["later","更晚的/地；后来"],["latest","最新的；最近的"],["lately","最近；近来"],["limit","限制；限度 v.限制"],["limited","有限的"],["limitless","无限的"],["limitation","局限；限制"],["time limit","短语：时限"],["internet","互联网"],["surf the internet","短语：上网"],["internet access","短语：网络接入"],["on the internet","短语：在网上"],["one in ten","短语：十分之一"],["weather","天气"],["weather-beaten","饱经风霜的"],["relate","联系；讲述"],["relation","关系；联系"],["relationship","关系；联系"],["relative","亲戚 adj.相对的"],["unrelated","无关的"],["disaster","灾难"],["natural disaster","自然灾害"],["disaster relief","救灾"],["flood","洪水 v.淹没"],["wild","野生的；疯狂的"],["wildly","疯狂地；失控地"],["wilderness","荒野"],["in the wild","短语：在野外"],["wild animals","野生动物"],["camp","露营 n.营地"],["camper","露营者"],["campsite","露营地"],["summer camp","夏令营"],["set up camp","短语：搭帐篷；扎营"],["burn-burned-burnt","不规则动词：燃烧；烫伤"],["burner","火炉；燃烧器"],["burn out","短语：筋疲力尽；烧坏"],["suffer","遭受；受苦"],["sufferer","受难者；患者"],["suffering","痛苦；苦难"],["suffer from","短语：遭受；患（病）"],["suffer pain","短语：承受痛苦"],["design","设计"],["designer","设计师"],["by design","短语：故意地"],["material","材料；素材"],["raw material","原材料"],["teaching material","教学材料"],["building material","建筑材料"],["research","研究"],["researcher","研究者"],["scientific research","科学研究"],["be worth doing sth.","短语：值得做某事"],["worth","值得的"],["It is worthwhile to do","句型：值得去做"],["expert","专家 adj.专业的"],["expertise","专业知识；专长"],["an expert in","短语：……方面的专家"],["expert advice","专业建议"],["similar","相似的"],["similarity","相似之处"],["similarly","同样地；类似地"],["be similar to","短语：与……相似"],["climate","气候"],["climate change","气候变化"],["coastal","沿海的"],["coast","海岸"],["coastal area","沿海地区"],["coastal city","沿海城市"],["coastline","海岸线"],["raise","筹集；提升；养育"],["raise money","短语：筹款"],["raise awareness","短语：提高意识"],["raise a family","短语：养家"],["wave","挥手 n.波浪"],["wave goodbye","短语：挥手告别"],["typhoon","台风"],["typhoon warning","台风预警"],["hit by a typhoon","短语：遭受台风袭击"],["effort","努力"],["effortless","不费力的"],["make an effort","短语：做出努力"],["spare no effort","短语：不遗余力"],["chat-chatted-chatted","聊天"],["chat with","短语：和……聊天"],["have a chat","短语：闲聊"],["official","官方的 n.官员"],["officially","正式地；官方地"],["government official","政府官员"],["official language","官方语言"],["mask","面具；口罩 v.掩饰；遮盖"],["unmask","揭露；脱去面具"],["mask one’s feeling","短语：掩饰情绪"],["take off the mask","短语：摘下面具"],["serve","服务；充当；招待"],["serve as","短语：充当；担任"],["servant","仆人"],["server","服务员；服务器"],["public servant","公务员"],["serve the people","短语：为人民服务"],["disease","疾病"],["treat a disease","短语：治疗疾病"],["heart disease","心脏病"],["catch a disease","短语：患病"],["spread-spread-spread","不规则动词：传播；蔓延"],["spread out","短语：散开；伸展"],["spread rumor","短语：散布谣言"],["the spread of information","短语：信息的传播"],["investigate","调查"],["investigation","调查"],["investigate a case","短语：调查案件"],["under investigation","短语：正在调查中（原文investigate为笔误）"],["carry out an investigation","短语：开展一项调查"],["among","在……之中（三者及以上）"],["among the crowd","短语：在人群当中"],["discover","发现"],["discovery","发现"],["discover the truth","短语：发现真相"],["holiday(s)","假期"],["on holiday","短语：在度假"],["not ... until","句型：直到……才"],["recipient","接收者"],["receive","收到；接收"],["receipt","收据"],["reception","接待；接待处"],["curiosity","好奇心"],["curious","好奇的"],["curiously","好奇地"],["out of curiosity","短语：出于好奇"],["be curious about","短语：对……好奇"],["wonder about","短语：想知道；对……感到好奇"],["wonderful","绝妙的；精彩的"],["wonderfully","极好地"],["no wonder","短语：难怪"],["hide‑hid‑hidden","不规则动词：隐藏；躲藏"],["hide from","短语：躲避"],["hide away","短语：藏起来"],["identity","身份"],["identification","识别；身份证明"],["identical","相同的"],["identity card","身份证"],["wrap‑wrapped‑wrapped","包裹"],["wrap up","短语：包起来"],["be wrapped in","短语：被包裹在……"],["historian","历史学家"],["history","历史"],["historical","历史的；有关历史的"],["probably","大概；很可能"],["probable","很可能的"],["probability","可能性"],["recent","最近的"],["recently","最近"],["in recent years","短语：近年来"],["brown","棕色的 n.棕色"],["heavy","重的；大量的"],["heavily","沉重地；猛烈地"],["heaviness","沉重"],["cloth","布"],["clothes","衣服（具体衣物）"],["clothing","服装（总称，不可数）"],["technology","技术；科技"],["technical","技术的"],["produce","生产；制造 n.农产品"],["product","产品"],["production","生产；产量"],["productive","多产的；富有成效的"],["come","来"],["come along","短语：跟来；进展"],["come along with","短语：与……一起来"],["as…as","句型：和……一样"],["as…as possible","短语：尽可能……"],["as long as","短语：只要；和……一样长"],["then","然后；那时"],["by then","短语：到那时"],["since then","短语：从那以后"],["and then","短语：然后"],["season","季节"],["in season","短语：当季；应季"],["out of season","短语：反季"],["alone","独自的/地（无感情色彩）"],["lonely","孤独的；荒凉的"],["loneliness","孤独"],["leave sb. alone","短语：不打扰某人"],["let alone","短语：更不用说"],["extra","额外的"],["extra charge","短语：额外收费"],["century","世纪"],["centuries","世纪（复数）"],["in the 21st century","短语：在21世纪"],["admiration","钦佩；赞赏"],["admire","钦佩；欣赏"],["admirable","令人钦佩的"],["tear-tore-torn","不规则动词：撕；撕破"],["tearful","含泪的；流泪的"],["burst into tears","短语：突然大哭"],["tear up","短语：撕碎；流泪"],["tear apart","短语：撕碎；使心碎"],["emotion","情绪；情感"],["emotional","情感的；情绪化的"],["emotionally","在情绪上"],["emotionless","没有感情的"],["control one’s emotion","短语：控制情绪"],["report","报道；报告"],["reporter","记者"],["reported","据报道的"],["reportedly","据传闻；据报道"],["type","类型 v.打字"],["typical","典型的"],["typically","典型地；通常"],["typist","打字员"],["type in","短语：输入"],["blood type","血型"],["bug","虫子；故障"],["dry","干的 v.（使）变干"],["drier/dryer","更干的；n.烘干机"],["driest","最干的"],["drought","干旱"],["dryness","干燥"],["onion","洋葱"],["wash","洗"],["washing","洗涤；待洗衣服"],["washable","可水洗的"],["washer","洗衣机"],["unwashed","未清洗的"],["thick","厚的；浓的"],["thickly","厚厚地；浓密地"],["thickness","厚度；浓度"],["thicken  v.（","使）变厚；变浓"],["bright","明亮的；聪明的"],["brightly","明亮地"],["brightness","亮度；聪慧"],["brighten  v.（","使）变亮；（使）开心"],["bright-eyed","目光明亮的；充满活力的"],["society","社会"],["social","社会的；社交的"],["socially","在社交方面"],["socialist","社会主义的 n.社会主义者"],["socialize","社交；交往"],["bring-brought-brought","不规则动词：带来"],["bring back","短语：带回；使回忆起"],["bring together","短语：汇集；使相聚"],["close to","短语：靠近"],["closed","关闭的"],["calm","平静的 v.使平静"],["calm down","短语：冷静下来"],["keep calm","短语：保持冷静"],["calm sb. down","短语：使某人平静下来"],["mind","头脑；心思 v.介意"],["mindful","留心的；留意的"],["mindless","不用动脑的；鲁莽的"],["change one’s mind","短语：改变主意"],["make up one’s mind","短语：下定决心"],["never mind","短语：没关系；别在意"],["keep in mind","短语：记住"],["coffee maker","咖啡机"],["lock","锁上 n.锁"],["unlock","开锁"],["locker","储物柜"],["smart home","智能家居"],["smart phone","智能手机"],["communication","交流；沟通"],["communicate","交流；沟通"],["communication skill","沟通技巧"],["means of communication","短语：沟通方式"],["network","网络"],["social network","社交网络"],["network security","网络安全"],["device","设备；装置"],["mobile device","移动设备"],["away","离开"],["away from","短语：远离"],["take away","短语：拿走；外卖"],["wiring","线路；布线"],["wire","电线；金属丝"],["wireless","无线的"],["own","自己的 v.拥有"],["on one’s own","短语：独自；独立"],["owner","主人；所有者"],["ownership","所有权"],["convenient","方便的"],["conveniently","方便地"],["convenience","便利"],["inconvenience","不便"],["temperature","温度"],["temper","脾气"],["high temperature","高温"],["video","视频 v.录制视频"],["video call","视频通话"],["video game","电子游戏"],["abroad","在国外"],["study abroad","短语：出国留学"],["go abroad","短语：出国"],["from home and abroad","短语：来自国内外"],["power","力量；电力 v.驱动"],["powerful","强大的"],["powerless","无力的"],["power station","发电站"],["solar power","太阳能"],["power off","短语：断电；关机"],["allow","允许"],["allow sb. to do sth.","短语：允许某人做某事"],["offer","主动提供；出价 n.提议；录用通知"],["offer to do sth.","短语：主动提出做某事（原文offer sb. to do为易错误区，无此结构）"],["offer sth. to sb.","短语：向某人提供某物"],["a job offer","短语：录用通知"],["feed","喂养；供给 (fed-fed)"],["feed sb. with sth.","短语：用某物喂养某人"],["feedback","反馈"],["besides","除……之外（还有）"],["besides doing sth.","短语：除了做某事之外"],["except","除……之外（排除）"],["fix","修理；固定"],["fixed","固定的"],["fixed price","定价"],["fix one’s eyes on","短语：凝视；注视"],["perfect","完美的 v.使完善"],["perfectly","完美地"],["perfection","完美"],["imperfect","不完美的"],["practice makes perfect","谚语：熟能生巧"],["in perfect condition","短语：状态极佳"],["set up","短语：建立；搭建"],["set up a company","短语：创办公司"],["set up a system","短语：建立体系"],["system","系统；体系"],["solar system","太阳系"],["mirror","镜子 v.反映"],["be far from sth.","短语：远离某物；远非"],["far-farther/further","比较级：更远"],["farthest/furthest","最高级：最远"],["further discussion","短语：进一步讨论"],["farther away","短语（距离）更远"],["fashion","时尚"],["in fashion","短语：流行"],["out of fashion","短语：过时"],["fashion show","时装秀"],["secret","秘密 adj.秘密的"],["keep a secret","短语：保守秘密"],["top secret","短语：绝密"]];
+// 一次性追加本次提取的 449 条词汇（自动跳过词库中已有词）
+const EVENMORE_FLAG = 'gaokao_vocab_evenmore_v449_v1';
+function evenmoreImportOnce(){
+  let done = false;
+  try{ done = localStorage.getItem(EVENMORE_FLAG) === '1'; }catch(e){}
+  if(done) return;
+  const aliases = new Set();
+  const addAlias = w => w.toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean).forEach(a=>aliases.add(a));
+  data.forEach(w=>addAlias(w.word));
+  EVENMORE_WORDS.forEach(item=>{
+    const parts = item[0].toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean);
+    if(parts.some(p=>aliases.has(p))) return;
+    parts.forEach(p=>aliases.add(p));
+    data.push({ id:generateId(), index:nextIndex(), word:item[0], meaning:item[1],
+      inWrongBook:false, wrongBookStreak:0, wrongOrder:0 });
+  });
+  saveData();
+  try{ localStorage.setItem(EVENMORE_FLAG, '1'); }catch(e){}
+}
+evenmoreImportOnce();
+
+const FINAL_WORDS = [["likely","可能的"],["unlikely","不太可能的"],["likelihood","可能性"],["be likely to do sth.","短语：有可能做某事"],["advance","前进；进展"],["advanced","先进的；高级的"],["in advance","短语：提前"],["depress","使沮丧；压低"],["depressed","沮丧的；萧条的"],["depressing","令人压抑的"],["suffer from depression","短语：患抑郁症"],["economic depression","经济萧条"],["anxious","焦虑的"],["anxiety","焦虑"],["relieve anxiety","短语：缓解焦虑"],["anxiety about","短语：对……的担忧"],["search","搜寻；查找"],["research","研究"],["cheer","欢呼；鼓舞 n.欢呼声"],["cheerful","开心的；振奋的"],["cheer sb. up","短语：使某人振作起来"],["colleague","同事（colleagues复数）"],["work with colleagues","短语：和同事共事"],["college","大学；学院"],["analyze","分析"],["analysis","分析（复数analyses）"],["analyze data","短语：分析数据"],["analyze the cause","短语：分析原因"],["data","数据（datum单数）"],["big data","大数据"],["survey-surveyed","调查"],["surveyor","调查员；勘测员"],["sb. is aged +","数字 句型：某人年龄是……"],["sb. aged…","非谓语：年龄为……的某人"],["aged care","养老护理"],["middle-aged","中年的"],["aging","衰老的；老龄化的"],["lead to","短语：导致"],["leading","领先的；主要的"],["leader","领导者"],["lead sb. to do sth.","短语：使某人做某事；带领某人做某事"],["lead the way","短语：带路；示范"],["physical","身体的；物理的"],["physical health","身体健康"],["physical activity","体育活动"],["physical examination","体检"],["physics","物理学"],["mental","精神的；心理的"],["mentally","精神上；心理上"],["mental health","心理健康"],["mental illness","精神疾病"],["mental state","精神状态"],["value","价值 v.重视"],["valuable","有价值的"],["invaluable","无价的；极宝贵的"],["valuation","估价；估值"],["evaluate","评估；评价"],["evaluation","评估；评价"],["rate","比率；速度 v.评价"],["at a rate of","短语：以……速率"],["heart rate","心率"],["birth rate","出生率"],["exchange rate","汇率"],["rate sb./sth. as","短语：把……评定为"],["degree","程度；学位"],["to some degree","短语：在某种程度上"],["bachelor’s degree","学士学位"],["express","表达 adj.快速的"],["expression","表达；表情"],["expressive","富有表现力的"],["facial expression","面部表情"],["freedom of expression","言论自由"],["measure","测量 n.措施"],["measurement","测量；尺寸"],["measure sth.","短语：测量某物"],["take measures to do sth.","短语：采取措施做某事"],["extent","程度"],["extend","延伸；扩大"],["extension","延伸；扩建部分"],["extensive","广泛的；大量的"],["extensively","广泛地"],["to some extent","短语：在某种程度上"],["flourish","繁荣；兴旺"],["flourish business","短语：生意兴隆"],["flourishing","繁荣的；蒸蒸日上的"],["agree","同意"],["agreement","协议；同意"],["agreeable","令人愉快的；赞同的"],["disagree","不同意"],["disagreement","分歧；争论"],["agree with sb./sth.","短语：同意某人/某事"],["scale","规模；刻度 v.攀登"],["on a large scale","短语：大规模地"],["scale up/down","短语：扩大/缩小规模"],["score","分数 v.得分"],["scorer","得分者；记分员"],["score a goal","短语：进球得分"],["sense","感觉；意识 v.感觉到"],["sensitive","敏感的"],["sensation","感觉；轰动"],["senseless","无意义的；失去知觉的"],["sense of humor","短语：幽默感"],["make sense","短语：有道理；讲得通"],["common sense","短语：常识"],["sense danger","短语：察觉到危险"],["quality","质量；品质"],["high quality","高质量"],["qualify","（使）具备资格"],["qualification","资质；资格证书"],["simple","简单的"],["simply","简单地；仅仅"],["simplify","简化"],["meal","一餐；饭"],["three meals a day","短语：一日三餐"],["have a meal","短语：吃饭"],["meal time","用餐时间"],["chore","杂务；家务"],["household chores","家务"],["do chores","短语：做家务"],["daily chores","日常杂务"],["behavior","行为"],["good behavior","良好行为"],["behave","表现；举止"],["well-behaved","举止得体的"],["refer to","短语：提及；参考"],["reference","参考；参考文献"],["document","文件 v.记录"],["official document","官方文件"],["document a process","短语：记录流程"],["background","背景"],["family background","家庭背景"],["purpose","目的"],["on purpose","短语：故意地"],["compare","比较"],["compare A with/to B","短语：把A和B比较"],["suit","适合 n.套装"],["suitable","合适的"],["suitable to do sth.","短语：适合做某事"],["dress","连衣裙 v.穿衣服"],["dresses","连衣裙（复数）"],["dresser","梳妆台"],["dressy","时髦的；讲究衣着的"],["overdressed","穿得过于正式的"],["underdressed","穿着太随意的"],["dress up","短语：打扮；盛装"],["soft","柔软的；温和的"],["softly","柔和地；轻轻地"],["soften","（使）变软；缓和"],["software","软件"],["soft drink","软饮料"],["soft landing","软着陆"],["be soft on","短语：对……心软；纵容"],["cartoon(s)","卡通片；漫画"],["watch cartoon","短语：看卡通"],["impress","给……留下印象"],["impression","印象"],["impressive","令人印象深刻的"],["be impressed by","短语：对……印象深刻"],["leave a good impression","短语：留下好印象"],["maintain","维持；坚持认为"],["maintain a balance","短语：保持平衡"],["maintain that","从句：坚持认为"],["dull","阴沉的；枯燥的；迟钝的"],["dull weather","短语：阴沉的天气"],["a dull lecture","短语：枯燥的讲座"],["kick","踢"],["kick out","短语：踢出；解雇"],["joke","笑话 v.开玩笑"],["tell a joke","短语：讲笑话"],["play a joke on","短语：开……的玩笑"],["practical joke","短语：恶作剧"],["no joke","短语：不是闹着玩的"],["folk","民间的 n.人们"],["folks","家人；大伙"],["folktale","民间故事"],["folk music","民间音乐"],["old folk","老人"],["country folk","乡下人"],["convince","使信服；说服"],["convincing","有说服力的"],["convinced","确信的"],["convince sb. to do sth.","短语：说服某人做某事"],["convince sb. of sth.","短语：使某人相信某事"],["convincing evidence","短语：有力证据"],["predict","预测；预言"],["predict the future","短语：预测未来"],["hard to predict","短语：难以预测"],["exist","存在"],["existence","存在；生存"],["existent","现存的"],["struggle for existence","短语：为生存而挣扎"],["argument","争论；论点；主张"],["have an argument with","短语：和……争论"],["strong argument","短语：有力论据"],["oppose","反对"],["opposite","相反的 n.对立面"],["opposites","对立面（复数）"],["expand","扩大；扩张"],["expansion","扩张；拓展"],["expansive","广阔的；开朗的"],["expand business","短语：拓展业务"],["expand market","短语：扩大市场"],["architect","建筑师"],["architecture","建筑学；建筑风格"],["chief architect","总建筑师"],["landscape architect","景观设计师"],["cheat","欺骗；作弊 n.骗子"],["cheater","骗子；作弊者"],["cheat in an exam","短语：考试作弊"],["cheat on sb.","短语：对某人不忠"],["cheat sb. out of sth.","短语：骗取某人某物"],["feel cheated","短语：感觉上当了"],["fair","公平的；fairer比较级；fairest最高级"],["unfair","不公平的"],["fairly","公平地；相当"],["fairness","公平"],["fair play","短语：公平竞争"],["to be fair","短语：说句公道话"],["win-won-won","不规则动词：赢；获胜"],["winnings","奖金；赢来的钱"],["win a prize","短语：获奖"],["win-win","双赢的"],["seem","似乎；好像"],["seem to do sth.","短语：似乎要做某事"],["It seems that","句型：似乎……"],["seem like","短语：看起来像"],["there seems to be","句型：似乎有"],["test","测试；检测"],["take a test","短语：参加考试"],["test for","短语：检测"],["solve","解决"],["unsolved","未解决的"],["solve a problem","短语：解决问题"],["solution to ...","短语：……的解决办法"],["unless","除非"],["unless I’m mistaken","短语：如果我没记错"],["respect","尊重"],["respectful","恭敬的；有礼貌的"],["disrespect","不尊重"],["respect for","短语：对……的尊重"],["show respect to","短语：向……表示尊重"],["self-respect","自尊"],["oneself","自己"],["help yourself to sth.","短语：随便吃/自取"],["earn","挣得；赢得"],["earnings","收入；收益"],["earn a living","短语：谋生"],["support one’s family","短语：养家糊口"],["catch-caught-caught","不规则动词：抓住；赶上"],["get caught in","短语：遇上（风雨、困境）"],["get sth. done","句型：让某物被……"],["leave sth. done","句型：任由某物处于被……的状态"],["catch sb. doing sth.","句型：撞见/发现某人正在做某事"],["catch up with","短语：赶上"],["lazy","懒惰的；lazier比较级；laziest最高级"],["laziness","懒惰"],["lazy afternoon","短语：慵懒的下午"],["too lazy to do sth.","短语：太懒而不愿做某事"],["pass","通过；传递；经过"],["passer-by","路人"],["passage","通道；一段文章"],["pass by","短语：路过"],["pass on","短语：传递；继续"],["pass away","短语：去世"],["reason","理由 v.推理"],["reasonable","合理的"],["reasoning","推理"],["reason for","短语：……的理由"],["for some reason","短语：不知为何"],["sick","生病的；恶心的"],["sickness","疾病；恶心"],["be sick of","短语：厌倦"],["feel sick","短语：感到恶心"],["sick leave","病假"],["sick pay","病假工资"],["upset","心烦的 v.打乱；使难过"],["be upset about","短语：为……心烦"],["upset the balance","短语：打破平衡"],["upset stomach","短语：肠胃不适"],["upset sb.","短语：使某人心烦"],["work sth. out","短语：解决某事"],["work out sth.","短语：算出；制定"],["workout","锻炼"],["work out a problem","短语：解出难题"],["things work out","短语：事情顺利解决"],["work out a plan","短语：制定方案"],["explain","解释；说明"],["explanation","解释；说明"],["unexplained","无法解释的"],["explain sth. to sb.","短语：向某人解释某事"],["skate","滑冰"],["skateboard","滑板 v.滑滑板"],["skater","滑冰者"],["go skating","短语：去滑冰"],["hallway","走廊；过道"],["in the hallway","短语：在走廊里"],["school hallway","学校走廊"],["be picked up from/by","短语：被从……接走 / 被……接走"],["pick up the phone","短语：接电话"],["pick up a language","短语：偶然学会一门语言"],["wandering","走神的；漫游的"],["wander around","短语：四处闲逛"],["have a wandering mind","短语：心不在焉"],["wander from the point","短语：跑题"]];
+
+// 一次性追加本批 304 条词汇（自动跳过词库中已有词）
+const FINAL_FLAG = 'gaokao_vocab_final_v304_v1';
+function finalImportOnce(){
+  let done = false;
+  try{ done = localStorage.getItem(FINAL_FLAG) === '1'; }catch(e){}
+  if(done) return;
+  const aliases = new Set();
+  const addAlias = w => w.toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean).forEach(a=>aliases.add(a));
+  data.forEach(w=>addAlias(w.word));
+  FINAL_WORDS.forEach(item=>{
+    const parts = item[0].toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean);
+    if(parts.some(p=>aliases.has(p))) return;
+    parts.forEach(p=>aliases.add(p));
+    data.push({ id:generateId(), index:nextIndex(), word:item[0], meaning:item[1],
+      inWrongBook:false, wrongBookStreak:0, wrongOrder:0 });
+  });
+  saveData();
+  try{ localStorage.setItem(FINAL_FLAG, '1'); }catch(e){}
+}
+finalImportOnce();
+
+const ULTRA_WORDS = [["request","请求"],["make a request","短语：提出请求"],["at sb’s request","短语：应某人的要求"],["request sb. to do sth.","短语：要求某人做某事"],["by popular request","短语：应大众要求"],["take on","短语：承担；接受"],["take on a challenge","短语：接受挑战"],["take on responsibility","短语：承担责任"],["progress","进步；进展 v.进展"],["progressive","渐进的；逐步的"],["make progress","短语：取得进步"],["slow progress","短语：进展缓慢"],["a progress report","短语：进度报告"],["move up","短语：上升；晋升"],["movement","运动；移动"],["move up the ladder","短语：晋升"],["move up in the world","短语：飞黄腾达"],["zone","区域；地带"],["danger zone","危险区域"],["comfort zone","舒适区"],["no-parking zone","禁停区"],["miss","错过；想念"],["miss doing sth.","短语：错过做某事"],["miss the bus/train","短语：错过公交/火车"],["miss the point","短语：没抓住重点"],["hit or miss","短语：碰运气；好坏不定"],["reach","到达；达成 n.范围"],["reach a goal","短语：达成目标"],["reach an agreement","短语：达成协议"],["out of reach","短语：够不到"],["within reach","短语：伸手可及"],["deal with","短语：处理；打交道"],["dealer","经销商；商人"],["dealing","交易；往来"],["deal with a problem","短语：处理问题"],["deal with people","短语：与人打交道"],["handle","处理；应对"],["handle a situation","短语：应对局面"],["handle pressure","短语：应对压力"],["promise","承诺"],["promising","有前途的"],["promisingly","大有希望地"],["a promising future","短语：光明的前景"],["promising young man","短语：有前途的年轻人"],["break/keep a promise","短语：违背/遵守承诺"],["pressure","压力"],["under pressure","短语：在压力之下"],["put pressure on","短语：对……施加压力"],["blood pressure","血压"],["peer pressure","同辈压力"],["drive‑drove‑driven","不规则动词：驾驶；驱使"],["drive sb. mad/crazy","短语：使某人发疯"],["drive to","短语：开车前往"],["desire","渴望"],["desirable","令人满意的；值得拥有的"],["undesirable","不受欢迎的；不良的"],["have a desire for/to do","短语：渴望（某物/做某事）"],["desire to do sth.","短语：渴望做某事"],["burning desire","短语：强烈渴望（原文buring笔误）"],["far‑farther‑farthest","（距离）更远；最远"],["far‑further‑furthest","（程度）更进一步；最远"],["far from perfect","短语：远非完美"],["far from home","短语：离家很远"],["far from doing sth.","短语：远未做到某事"],["by far","短语：迄今为止；……得多"],["pleasant","令人愉快的"],["please","使高兴；取悦"],["pleased","（人）感到开心的"],["pleasure","愉快；乐事"],["pleasant weather","短语：宜人的天气"],["demanding","要求高的；费力的"],["a demanding job","短语：高要求的工作"],["a demanding boss","短语：严苛的老板"],["meet the demand","短语：满足需求"],["in demand","短语：有需求；畅销"],["inspire","激励；启发"],["inspiring","鼓舞人心的"],["inspiration","灵感；鼓舞人心的人/事"],["inspired","受到鼓舞的；有灵感的"],["inspire sb. to do sth.","短语：激励某人做某事"],["inspire confidence","短语：激发信心"],["shy","害羞的"],["shyer-shyest","比较级、最高级"],["shyly","害羞地"],["shyness","害羞"],["be shy of","短语：对……羞怯；欠缺"],["shy away from","短语：回避；避开"],["in front of","短语：在……前面（外部）"],["join","加入"],["joint","关节；接头 adj.联合的"],["join a club","短语：加入俱乐部"],["join in","短语：参加（活动）"],["speech","演讲；话语"],["speechless","说不出话的"],["speak-spoke-spoken","不规则动词：说；讲话"],["give a speech about","短语：做关于……的演讲"],["compete","竞争；比赛"],["competition","比赛；竞争"],["competitor","参赛者；对手"],["enter a competition","短语：参加比赛"],["win a competition","短语：赢得比赛"],["encourage","鼓励"],["encouragement","鼓励"],["encouraging","鼓舞人心的"],["encouraged","受到鼓舞的"],["courage","勇气"],["encourage sb. to do","短语：鼓励某人做某事"],["voice","嗓音 v.表达"],["voiced","有声的"],["voiceless","无声的；清辅音的"],["raise one’s voice","短语：提高音量"],["in a low/loud voice","短语：低声/大声"],["pronounce","发音"],["pronunciation","发音"],["practice pronunciation","短语：练习发音"],["gesture","手势 v.示意"],["gestures","手势（复数）"],["make a gesture","短语：做手势"],["gesture sb. to do sth.","短语：示意某人做某事"],["nervous","紧张的"],["nervously","紧张地"],["nerve","神经；勇气"],["nervousness","紧张"],["be nervous about","短语：对……感到紧张"],["get nervous","短语：变得紧张"],["nervous breakdown","精神崩溃"],["give up","短语：放弃"],["give up doing sth.","短语：放弃做某事"],["give up on sth.","短语：对某事不再抱希望"],["never give up","短语：永不放弃"],["give oneself up","短语：自首"],["on the stage","短语：在舞台上"],["go on the stage","短语：当演员；登台演戏"],["stage fright","怯场"],["in the early stage","短语：在早期阶段"],["audience","观众"],["a large audience","短语：大量观众"],["go on","短语：继续；进展"],["go on doing sth.","短语：继续做（同一件事）"],["go on to do sth.","短语：接着做（另一件事）"],["What’s going on?","句型：发生什么事了？"],["loud","大声的"],["loudly","大声地"],["louder-loudest","比较级、最高级"],["in a loud voice","短语：大声地"],["prize","奖品；奖项"],["win a first prize","短语：获得一等奖"],["award a prize","短语：颁奖"],["the Nobel prize","诺贝尔奖"],["prize money","奖金"],["be full of","短语：充满"],["fully","完全地"],["fullness","饱满；充实"],["be filled with","短语：充满"],["full of energy","短语：精力充沛"],["invite","邀请"],["invitation","邀请"],["inviting","诱人的"],["invite sb. to do sth.","短语：邀请某人做某事"],["accept an invitation","短语：接受邀请"],["refuse","拒绝"],["refusal","拒绝"],["refuse to do sth.","短语：拒绝做某事"],["refuse sth.","短语：拒绝某物"],["terrible","糟糕的；可怕的"],["terribly","非常；糟糕地"],["terrify","使恐惧"],["terrified","感到害怕的"],["terrifying","令人恐惧的"],["terror","恐惧"],["terrorist","恐怖分子"],["terrible mistake/weather","短语：严重错误/恶劣天气"],["low","低的；情绪低落的"],["lower-lowest","比较级、最高级"],["feel low","短语：情绪低落"],["low temperature","低温"],["stay up","短语：熬夜"],["stay up late","短语：晚睡"],["stay up all night","短语：通宵"],["stay up doing sth.","短语：熬夜做某事"],["beat-beat-beaten","不规则动词：打败；击打"],["unbeatable","不可战胜的"],["beat sb.","短语：打败某人"],["beat the record","短语：打破纪录"],["heart beats","短语：心跳"],["beat around the bush","短语：拐弯抹角"],["clap-clapped-clapped","鼓掌"],["clap one’s hands","短语：拍手"],["shout","大喊"],["shout at","短语：冲……大喊"],["shout for help","短语：呼救"],["doubt","怀疑"],["doubtful","怀疑的"],["undoubtedly","毫无疑问地"],["no doubt","短语：毫无疑问"],["in doubt","短语：存疑；不确定"],["trust","信任"],["trusted","受信任的"],["trusting","轻信他人的"],["talent","天赋；才能"],["talented","有天赋的"],["talentless","无天赋的"],["have a talent for","短语：有……天赋"],["talent show","才艺秀"],["talent pool","人才库"],["push","推；督促"],["pushy","爱出风头的；强求的"],["push sb. to do sth.","短语：催促/逼迫某人做某事"],["push forward","短语：推进"],["push the limit","短语：突破极限"],["escape","逃跑；逃避"],["escapee","逃亡者"],["escape from","短语：从……逃离"],["escape death","短语：死里逃生"],["escape doing sth.","短语：逃避做某事"],["tail","尾巴 v.尾随"],["tailless","无尾的"],["tail behind","短语：尾随"],["on sb’s tail","短语：紧跟某人"],["silly","愚蠢的；sillier比较级；silliest最高级"],["silly mistake","短语：低级错误"],["silly question","短语：愚蠢的问题"],["play silly games","短语：玩无聊的游戏"],["explore","探索"],["exploration","探索"],["explorer","探险家"],["explore the world","短语：探索世界"],["space exploration","太空探索（原文space explore修正）"],["observe","观察；遵守"],["observation","观察"],["observer","观察者"],["observe sb. do/doing sth.","短语：观察某人做某事"],["observe rules","短语：遵守规则"],["observe the stars","短语：观测星星"],["sunbathe","晒日光浴"],["sunbathing","日光浴"],["sunbathe in the sun","短语：晒太阳"],["sunbathe on the beach","短语：在沙滩晒日光浴"],["bathe","洗澡；沐浴"],["confuse","使困惑；混淆"],["confused","感到困惑的"],["confusing","令人费解的"],["confusion","困惑；混乱"],["confuse A with B","短语：把A和B搞混"],["be confused about","短语：对……感到困惑"],["a confusing situation","短语：混乱棘手的局面"],["delight","使高兴 n.喜悦"],["delighted","高兴的"],["delightful","令人愉快的"],["to one’s delight","短语：令某人高兴的是"],["delight in doing sth.","短语：乐于做某事"],["be delighted to do sth.","短语：很高兴做某事"],["edge","边缘 v.慢慢移动"],["on the edge of","短语：在……边缘"],["edge closer","短语：慢慢靠近"],["cutting edge","短语：前沿；尖端"],["sign","标志；迹象 v.签名"],["sign up for","短语：报名参加"],["sign in/out","短语：签到/签退"],["a sign of","短语：……的迹象"],["traffic sign","交通标志"],["remove","移除；去掉"],["removal","移除；搬迁"],["remove … from …","短语：把……从……移走"],["remove doubt","短语：消除疑虑"],["remove obstacle","短语：清除障碍"],["involve","包含；涉及"],["involved","有关的；卷入的"],["involvement","参与；卷入"],["be involved in","短语：参与；卷入"],["involve doing sth.","短语：涉及做某事"],["get involved in","短语：参与其中"],["regret","后悔；遗憾"],["regretted","过去式/过去分词"],["regretful","后悔的；遗憾的"],["regret doing sth.","短语：后悔做过某事"],["regret to do sth.","短语：遗憾地要去做某事"],["to one’s regret","短语：令某人遗憾的是"],["generous","慷慨的"],["generosity","慷慨"],["be generous to sb.","短语：对某人慷慨"],["bend-bent-bent","不规则动词：弯曲"],["bend down","短语：弯腰"],["bend one’s knee","短语：屈膝"],["bend the rules","短语：变通规则"],["look up","短语：查阅；向上看"],["look up a word","短语：查单词"],["predict","预测"],["predict the future","短语：预测未来"],["It is predicted that …","句型：据预测……"],["shape","形状 v.塑造"],["shapes","形状（复数）"],["shapeless","无形状的"],["in the shape of","短语：呈……形状"],["out of shape","短语：变形；身体走形"],["repair","修理"],["under repair","短语：在修理中"],["repair the damage","短语：修复损坏之处"],["beyond repair","短语：无法维修"],["combine","结合；组合"],["combination","结合体；组合"],["combine A with B","短语：把A和B结合"],["combined efforts","短语：共同努力"],["combine blue with yellow paint","短语：把蓝色和黄色颜料混合"],["paint","颜料 v.绘画"],["classify","分类；归类"],["classification","分类"],["classify A as B","短语：把A归类为B"],["classify A into B","短语：把A分成B"],["classify waste into different trash bins in the community","短语：在社区把垃圾分到不同垃圾桶"],["classify waste into four types","短语：将垃圾分为四类"],["heritage","遗产"],["inherit","继承"],["cultural heritage","文化遗产"],["natural heritage","自然遗产"],["pass down the cultural heritage to young kids","短语：把文化遗产传给孩童"],["consist","由……组成"],["consist of","短语：由……组成（A consist of B）"],["diversity","多样性"],["diverse","多样的；丰富的"],["cultural diversity","文化多样性"],["the diversity of local produce","短语：当地农产品的多样性"],["diverse kinds of fruits","短语：各式各样的水果"],["a wide variety of","短语：各种各样的"],["commit","承诺；犯下"],["commit oneself to","短语：致力于；承诺"],["be committed to doing sth.","短语：致力于做某事"],["commit a crime","短语：犯罪"],["commit himself to passing down the craft","短语：他致力于传承这项手艺"],["craft","手艺；工艺"],["craftsman","手艺人；工匠"],["traditional crafts","传统工艺"],["skilled craftsman","技艺娴熟的工匠"],["master the ancient craft","短语：掌握古老工艺"],["accident","事故"],["devote","奉献；投入"],["devote oneself to doing sth.","短语：致力于做某事"],["be devoted to public speech","短语：专心于公开演讲"],["gesture to sb. to do sth.","短语：示意某人做某事"],["follow the director’s gestures","短语：听从导演的手势指令"],["direct","指导 adj.直接的"],["director","导演；负责人"],["directly","直接地"],["harmony","和谐"],["in harmony with","短语：与……和谐相处"],["social harmony","社会和谐"],["a sense of harmony","短语：和谐感"],["The elder is in harmony with the wild birds.","句子：老人和野鸟和睦相伴。"],["preserve","保护；保存"],["preservative","防腐剂"],["preserve cultural heritage","短语：保护文化遗产"],["well-preserved","保存完好的"],["well-behaved","举止得体的"],["behavior","行为"],["preserve the environment","短语：保护环境"],["preserve the fresh vegetables in the fridge","短语：把新鲜蔬菜放冰箱保鲜"],["reflect","反射；反思"],["reflection","倒影；反思"],["reflect on","短语：反思；思考"],["reflect light","短语：反射光线"],["The calm lake reflects the soft morning sunlight.","句子：平静的湖面映出柔和的晨光。"],["gentle","柔和的；温和的"],["pale blue","淡蓝色"],["bench","长凳"],["park bench","公园长椅"],["The doctor advised me to rest on the wooden bench under the trees.","句子：医生建议我在树下的木凳上休息。"],["license","许可证；执照"],["driver’s license","驾照"],["a license to do sth.","短语：做某事的许可证"],["a license to run a restaurant","短语：经营餐厅的执照"],["get a license to open the shop","短语：取得开店执照"],["struggle","挣扎；努力"],["struggle to do","短语：奋力做某事"],["struggle against","短语：与……抗争"],["struggle for","短语：为……争取"],["struggle to carry the heavy box","短语：费力搬重箱子"],["struggle to lift the container","短语：奋力抬起容器"],["bright","明亮的"],["brighten","（使）变亮"],["brightness","亮度"],["brighten the room","短语：让房间亮起来"],["Bright sunlight breaks through the thick clouds.","句子：明亮的阳光穿透厚厚的云层。"],["make a difference","短语：起作用；造成影响"],["have an effect on","短语：对……产生影响"],["cash","现金"],["in cash","短语：用现金"],["cash flow","现金流"],["short of cash","短语：资金短缺"],["be short of","短语：缺乏"],["buy/pay for vegetables in cash","短语：现金买菜"],["souvenir","纪念品"],["a souvenir of","短语：……的纪念品"],["buy a small souvenir in a gift shop","短语：礼品店买小纪念品"],["gifted","有天赋的"],["genius","天才"],["credit","信用；学分"],["credit card","信用卡"],["on credit","短语：赊账"],["academic credits","学分"],["academy","学院；研究院"],["be credited to","短语：归功于"],["be credited with","短语：被誉为；有（某项成就）"],["Edison is credited with the invention of the light bulb.","句子：爱迪生被认为发明了灯泡。"],["The invention of the light bulb is credited to Edison.","句子：灯泡的发明归功于爱迪生。"],["buy something on credit","短语：赊购物品"],["appeal","吸引；呼吁"],["appeal to","短语：吸引；呼吁"],["make an appeal","短语：发出呼吁"],["lose one’s appeal","短语：失去吸引力"],["The government appeals to people to save water.","句子：政府呼吁民众节约用水。"],["The jewellery appeals to passers-by.","句子：这件珠宝吸引路人。"],["pass by","短语：路过"],["approach","靠近 n.方法"],["a new approach","短语：一种新方法"],["as winter approaches","短语：随着冬天来临"],["As the train approaches the station.","句子：当列车驶近车站。"],["frighten","使害怕；惊吓"],["frightened","感到害怕的"],["fright","惊吓"],["frighten sb. away","短语：把某人吓跑"],["frighten the life out of sb.","短语：把某人吓得半死"],["frighten sb. away with a sharp shout","短语：一声大喝把某人吓跑"],["grateful","感激的"],["gratefully","感激地"],["be grateful to sb. for sth.","短语：因某事感激某人"],["I would be grateful if …","句型：如果……我将不胜感激"],["content","满足的 n.内容"],["be content with","短语：对……满意"],["main content","短语：主要内容"],["The elder is content with his retired life.","句子：老人对退休生活很满足。"],["suburb","郊区"],["suburban","郊区的"],["in the suburb","短语：在郊区"],["initial","最初的"],["initially","起初"],["the initial stage","短语：初期"],["initial letter","短语：首字母"],["expect","期待；预料"],["unexpected","意想不到的"],["expect sb. to do sth.","短语：期待某人做某事"],["as expected","短语：正如预料"],["beyond expectation","短语：出乎意料"],["shock","震惊；打击"],["shocked","感到震惊的"],["shocking","令人震惊的"],["be shocked at/by","短语：对……感到震惊"],["a shock to sb.","短语：对某人来说是个打击"],["cultural shock","短语：文化冲击"],["assign","分配；布置"],["assign sth. to sb.","短语：把某物分配给某人"],["assign homework","短语：布置作业"],["a tough assignment","短语：艰巨任务"],["specific","具体的；特定的"],["specific purpose","短语：特定目的"],["dig-dug-dug","不规则动词：挖"],["dig out","短语：挖出；找出"],["dig a hole","短语：挖洞"],["exhaust","耗尽；使疲惫"],["exhausted","筋疲力尽的"],["exhausting","令人疲惫的"],["exhaust one’s patience","短语：耗尽耐心"],["worth","值得的"],["worthy","值得的"],["be worth doing sth.","短语：值得做某事"],["be worthy of doing sth.","短语：值得做某事"],["sentence","句子；判决 v.宣判"],["make a sentence","短语：造句"],["serve a sentence","短语：服刑"],["a life sentence","短语：无期徒刑"],["possess","拥有；具备"],["possession","拥有；财产"],["possessive","占有欲强的"],["possess a quality","短语：具备一种特质"],["personal possession","短语：个人财产"],["process","过程 v.加工；处理"],["in the process of","短语：在……过程中"],["process data","短语：处理数据"],["process food","短语：加工食品"],["recharge","充电；恢复精力"],["recharge the battery","短语：给电池充电"],["recharge one’s battery","短语：恢复精力"],["recharge a phone","短语：给手机充电"],["charge","充电；收费；指控；猛冲 n.费用；掌管"],["charge the battery","短语：充电"],["free of charge","短语：免费"],["charge sb. with sth.","短语：指控某人某事"],["in charge of","短语：掌管；负责"],["charge at/into","短语：猛冲"],["gain","获得；收获"],["regain","重新获得"],["regain control","短语：重新掌控"],["regain confidence","短语：重拾信心"],["regain one’s strength","短语：恢复体力"],["essential","必要的；核心的"],["essentially","本质上；根本地"],["essence","本质"],["in essence","短语：本质上"],["essential items","短语：必需品"],["review","复习；回顾；评论"],["review for an exam","短语：备考复习"],["under review","短语：在审核中"],["a review of","短语：对……的回顾"],["recall","回忆起"],["recall doing sth.","短语：回忆做过某事"],["recall that","从句：回想……"],["necessary","必要的"],["necessarily","必定地"],["if necessary","短语：如有必要"],["efficient","高效的"],["efficiently","高效地"],["efficiency","效率"],["inefficient","低效的"],["work efficiently","短语：高效工作"],["improve efficiency","短语：提高效率"],["average","平均的；普通的 n.平均数"],["average temperature","短语：平均气温"],["an average student","短语：中等生"],["above/below average","短语：高于/低于平均水平"],["figure","数字；人物；图表 v.计算"],["figure out","短语：弄明白；算出"],["a key figure","短语：关键人物"],["sales figures","短语：销售数据"],["concentrate","集中（注意力）"],["concentration","专心；浓度"],["concentrate on","短语：专注于"],["minor","次要的；轻微的"],["minority","少数；少数民族"],["minor injuries","短语：轻伤"],["delay","推迟；延误"],["delay doing sth.","短语：推迟做某事"],["without delay","短语：毫不拖延地"],["flight delay","短语：航班延误"],["delayed reaction","短语：反应迟缓"],["junior","初级的；年少的"],["junior high school","短语：初中"],["senior high school","短语：高中"],["junior staff","短语：初级员工"],["make up for","短语：弥补"],["make up for lost time","短语：弥补逝去的时间"],["make up for a mistake","短语：弥补过错"],["make up for one’s shortcomings","短语：弥补自身不足"],["intense","强烈的；紧张的"],["intensity","强度"],["intensify","加强；加剧"],["intense pressure","短语：巨大压力"],["intense competition","短语：激烈竞争"],["intense focus","短语：高度专注"],["frequent","频繁的"],["frequency","频率"],["frequent visitor","短语：常客"]];
+
+// 一次性追加本批 550 条词汇（自动跳过词库中已有词）
+const ULTRA_FLAG = 'gaokao_vocab_ultra_v550_v1';
+function ultraImportOnce(){
+  let done = false;
+  try{ done = localStorage.getItem(ULTRA_FLAG) === '1'; }catch(e){}
+  if(done) return;
+  const aliases = new Set();
+  const addAlias = w => w.toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean).forEach(a=>aliases.add(a));
+  data.forEach(w=>addAlias(w.word));
+  ULTRA_WORDS.forEach(item=>{
+    const parts = item[0].toLowerCase().split(/\s*\/\s*/).map(s=>s.trim()).filter(Boolean);
+    if(parts.some(p=>aliases.has(p))) return;
+    parts.forEach(p=>aliases.add(p));
+    data.push({ id:generateId(), index:nextIndex(), word:item[0], meaning:item[1],
+      inWrongBook:false, wrongBookStreak:0, wrongOrder:0 });
+  });
+  saveData();
+  try{ localStorage.setItem(ULTRA_FLAG, '1'); }catch(e){}
+}
+ultraImportOnce();
+
+function nextIndex(){
+  return data.reduce((m,w)=>Math.max(m, w.index||0), 0) + 1;
+}
+function maxIndex(){
+  return data.reduce((m,w)=>Math.max(m, w.index||0), 0) || 1;
+}
+function byId(id){ return data.find(w=>w.id===id); }
+
+/* ============ 全局状态 ============ */
+const state = {
+  activeTab:'review',
+  review:{ screen:'setup', queue:[], pos:0, wrong:0, answered:false, q:null, lastChange:null, direction:'e2c' },
+  wrongbook:{ screen:'setup', queue:[], pos:0, answered:false, q:null, direction:'e2c', order:'random', lastChange:null },
+  manage:{ selected:new Set(), importText:'', importMsg:'' }
+};
+
+function el(id){ return document.getElementById(id); }
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function updateDashboard(){
+  const wc = data.filter(w=>w.inWrongBook).length;
+  el('statTotal').textContent = data.length;
+  el('statWrong').textContent = wc;
+  el('wrongBadge').textContent = wc;
+}
+
+let toastTimer;
+function toast(msg, type){
+  const t = el('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' '+type : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{ t.className='toast'; }, 2200);
+}
+function shake(node){
+  node.classList.remove('shake','input-error');
+  void node.offsetWidth;
+  node.classList.add('shake','input-error');
+  node.focus();
+}
+
+/* ============ 通用判定 ============ */
+function normalize(str){
+  return String(str).toLowerCase().replace(/[\s\p{P}\p{S}\p{M}]/gu, '');
+}
+function isMatch(input, answer){
+  const a = normalize(input), b = normalize(answer);
+  if(!a || !b) return false;
+  return a.indexOf(b) !== -1 || b.indexOf(a) !== -1;
+}
+function makeQuestion(word, direction){
+  const dir = direction === 'mixed' ? (Math.random() < .5 ? 'e2c' : 'c2e') : direction;
+  return dir === 'e2c'
+    ? { dir, prompt:word.word,     answer:word.meaning, label:'英译中 · 请输入中文释义', wordId:word.id }
+    : { dir, prompt:word.meaning, answer:word.word,    label:'中译英 · 请输入英文单词', wordId:word.id };
+}
+
+/* ============ 标签切换 ============ */
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const tab = btn.dataset.tab;
+    state.activeTab = tab;
+    document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active', b===btn));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('hidden', p.id !== 'panel-'+tab));
+    if(tab === 'manage') renderManage();
+  });
+});
+
+/* ====================================================
+   模块一：常规复习
+   ==================================================== */
+function renderReview(){
+  const p = el('panel-review'), s = state.review;
+  if(s.screen === 'setup'){
+    p.innerHTML = `
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon">📖</div>
+          <div><h2>常规复习</h2><p class="card-desc">按序号范围复习，答错的词会自动进入错词本</p></div>
+        </div>
+        <div class="form-grid">
+          <div class="field" style="margin-bottom:0"><label>起始序号</label><input type="number" id="rStart" min="1" value="1"></div>
+          <div class="field" style="margin-bottom:0"><label>结束序号</label><input type="number" id="rEnd" min="1" value="${maxIndex()}"></div>
+        </div>
+        <div class="field" style="margin-top:20px"><label>复习方向</label>
+          <div class="radio-row">
+            <label class="radio"><input type="radio" name="rdir" value="e2c" ${s.direction==='e2c'?'checked':''}><span>英译中</span></label>
+            <label class="radio"><input type="radio" name="rdir" value="c2e" ${s.direction==='c2e'?'checked':''}><span>中译英</span></label>
+            <label class="radio"><input type="radio" name="rdir" value="mixed" ${s.direction==='mixed'?'checked':''}><span>随机混合</span></label>
+          </div>
+        </div>
+        <button class="btn primary big" id="rStartBtn">开始复习 →</button>
+      </div>`;
+    el('rStartBtn').addEventListener('click', startReview);
+  }else if(s.screen === 'quiz'){
+    renderReviewQuestion();
+  }else if(s.screen === 'result'){
+    p.innerHTML = `
+      <div class="card center">
+        <div class="result-emoji">🎉</div>
+        <h2>本轮复习已完成！</h2>
+        <p class="result-text">本轮共答错 <b class="wrong-num">${s.wrong}</b> 个词。</p>
+        <div class="result-actions">
+          <button class="btn primary big" id="goWrong">去消灭错题</button>
+          <button class="btn ghost big" id="exitReview">退出常规复习</button>
+        </div>
+      </div>`;
+    el('goWrong').addEventListener('click', ()=>{
+      state.wrongbook.screen = 'setup';
+      renderWrongbook();
+      document.querySelector('.tab[data-tab="wrongbook"]').click();
+    });
+    el('exitReview').addEventListener('click', ()=>{ s.screen='setup'; renderReview(); });
+  }
+}
+
+function startReview(){
+  const s = state.review;
+  let start = parseInt(el('rStart').value, 10);
+  let end   = parseInt(el('rEnd').value, 10);
+  if(isNaN(start) || start < 1) start = 1;
+  if(isNaN(end)   || end   < 1) end = maxIndex();
+  if(start > end){ toast('起始序号不能大于结束序号', 'error'); return; }
+  s.direction = document.querySelector('input[name="rdir"]:checked').value;
+  s.queue = data.filter(w=>w.index>=start && w.index<=end)
+                .sort((a,b)=>a.index-b.index).map(w=>w.id);
+  if(!s.queue.length){ toast('该序号范围内没有词汇', 'error'); return; }
+  s.pos=0; s.wrong=0; s.answered=false; s.lastChange=null;
+  s.screen='quiz';
+  renderReview();
+}
+
+function renderReviewQuestion(){
+  const s = state.review;
+  const word = byId(s.queue[s.pos]);
+  s.q = makeQuestion(word, s.direction);
+  s.answered = false;
+  const pct = Math.round(s.pos / s.queue.length * 100);
+  el('panel-review').innerHTML = `
+    <div class="card quiz-card">
+      <div class="progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div class="progress-label">当前进度：第 <b>${s.pos+1}</b> / ${s.queue.length} 个</div>
+      <div class="prompt">${escapeHtml(s.q.prompt)}</div>
+      <div class="dir-label">${s.q.label}</div>
+      <div class="answer-row">
+        <input id="rAnswer" class="answer-input" placeholder="在这里输入答案…" autocomplete="off">
+        <button class="btn primary" id="rSubmit">提交</button>
+      </div>
+      <div class="feedback" id="rFeedback"></div>
+      <div class="quiz-foot"><button class="link-btn" id="rExit">退出复习</button></div>
+    </div>`;
+  el('rSubmit').addEventListener('click', submitReview);
+  el('rAnswer').addEventListener('keydown', e=>{ if(e.key==='Enter') submitReview(); });
+  el('rAnswer').addEventListener('input', e=>e.target.classList.remove('input-error'));
+  el('rExit').addEventListener('click', ()=>{ s.screen='setup'; renderReview(); });
+  el('rAnswer').focus();
+}
+
+/* 【常规复习 · 判定错误即时写入】错一个，立刻存一个。
+   集中保证 4 件事：置 inWrongBook=true、wrongBookStreak=0、
+   wrongOrder=当前时间戳、立即 saveData() 落盘（不等整轮复习结束）。
+   作用范围仅限常规复习的判定错误分支；撤销、错词本、词库管理与界面均不受影响。 */
+function markWrongAndSave(word){
+  if(!word) return;
+  word.inWrongBook = true;
+  word.wrongBookStreak = 0;
+  word.wrongOrder = Date.now();
+  saveData();
+}
+
+function submitReview(){
+  const s = state.review;
+  if(s.answered) return;
+  const input = el('rAnswer');
+  const val = input.value.trim();
+  if(!val){ shake(input); return; }
+
+  const correct = isMatch(val, s.q.answer);
+  const word = byId(s.q.wordId);
+  const fb = el('rFeedback');
+  s.answered = true;
+
+  if(correct){
+    fb.innerHTML = `
+      <div class="result ok">
+        <span class="mark">✔</span>
+        <div><div class="result-title">回答正确！</div>
+        <div class="result-detail">${escapeHtml(word.word)} — ${escapeHtml(word.meaning)}</div></div>
+      </div>
+      <div class="next-row"><button class="btn primary" id="rNext">下一题 →</button></div>`;
+    el('rNext').addEventListener('click', nextReviewQuestion);
+  }else{
+    s.wrong++;
+    s.lastChange = { id:word.id, prev:{
+      inWrongBook:word.inWrongBook, wrongBookStreak:word.wrongBookStreak, wrongOrder:word.wrongOrder
+    }};
+    // 判定为错误 → 立刻写入错词本并即时落盘（错一个，存一个）
+    markWrongAndSave(word);
+    updateDashboard();
+    fb.innerHTML = `
+      <div class="result bad">
+        <span class="mark">✘</span>
+        <div><div class="result-title">回答错误</div>
+        <div class="result-detail">正确答案：${escapeHtml(s.q.answer)}</div>
+        <div class="wrong-tip">已加入错词本</div></div>
+      </div>
+      <div class="next-row">
+        <button class="btn primary" id="rNext">下一题 →</button>
+        <button class="link-btn" id="rUndo">我其实答对了</button>
+      </div>`;
+    el('rNext').addEventListener('click', nextReviewQuestion);
+    el('rUndo').addEventListener('click', undoWrong);
+  }
+  input.disabled = true;
+  el('rSubmit').disabled = true;
+}
+
+function undoWrong(){
+  const s = state.review;
+  if(s.lastChange){
+    const w = byId(s.lastChange.id);
+    if(w) Object.assign(w, s.lastChange.prev);
+    if(s.wrong > 0) s.wrong--;
+    s.lastChange = null;
+    saveData(); updateDashboard();
+    toast('已撤销加入错词本');
+  }
+  nextReviewQuestion();
+}
+
+function nextReviewQuestion(){
+  const s = state.review;
+  s.pos++;
+  if(s.pos >= s.queue.length){ s.screen='result'; renderReview(); }
+  else renderReviewQuestion();
+}
+
+/* ====================================================
+   模块二：专属错词本
+   ==================================================== */
+function renderWrongbook(){
+  const p = el('panel-wrongbook'), s = state.wrongbook;
+  if(s.screen === 'setup'){
+    const count = data.filter(w=>w.inWrongBook).length;
+    p.innerHTML = `
+      <div class="card">
+        <div class="card-head">
+          <div class="card-icon" style="background:var(--indigo-soft)">🎯</div>
+          <div><h2>专属错词本</h2><p class="card-desc">连续答对 3 次即可将单词移出错词本</p></div>
+        </div>
+        ${count===0 ? '<div class="empty-state">错词本空空的，先去常规复习制造一些错题吧～</div>' : ''}
+        <div class="field"><label>出题方向</label>
+          <div class="radio-row">
+            <label class="radio"><input type="radio" name="wdir" value="e2c" ${s.direction==='e2c'?'checked':''}><span>英译中</span></label>
+            <label class="radio"><input type="radio" name="wdir" value="c2e" ${s.direction==='c2e'?'checked':''}><span>中译英</span></label>
+            <label class="radio"><input type="radio" name="wdir" value="mixed" ${s.direction==='mixed'?'checked':''}><span>随机混合</span></label>
+          </div>
+        </div>
+        <div class="field"><label>复习顺序</label>
+          <div class="radio-row">
+            <label class="radio"><input type="radio" name="worder" value="random" ${s.order==='random'?'checked':''}><span>乱序（随机打乱）</span></label>
+            <label class="radio"><input type="radio" name="worder" value="time" ${s.order==='time'?'checked':''}><span>按录入顺序（按错题加入的时间先后）</span></label>
+          </div>
+        </div>
+        <button class="btn primary indigo big" id="wStart" ${count===0?'disabled':''}>开始消灭错题 →</button>
+      </div>`;
+    document.querySelectorAll('input[name="wdir"]').forEach(r=>r.addEventListener('change', e=>s.direction=e.target.value));
+    document.querySelectorAll('input[name="worder"]').forEach(r=>r.addEventListener('change', e=>s.order=e.target.value));
+    if(count>0) el('wStart').addEventListener('click', startWrongbook);
+  }else if(s.screen === 'quiz'){
+    renderWrongQuestion();
+  }else if(s.screen === 'done'){
+    p.innerHTML = `
+      <div class="card center">
+        <div class="result-emoji">🏆</div>
+        <h2>今日错题已清理完毕！</h2>
+        <p class="result-text">坚持就是胜利，继续保持～</p>
+        <div class="result-actions">
+          <button class="btn primary indigo big" id="wBack">返回错词本</button>
+          <button class="btn ghost big" id="wHome">回到常规复习</button>
+        </div>
+      </div>`;
+    el('wBack').addEventListener('click', ()=>{ s.screen='setup'; renderWrongbook(); });
+    el('wHome').addEventListener('click', ()=>document.querySelector('.tab[data-tab="review"]').click());
+  }
+}
+
+function startWrongbook(){
+  const s = state.wrongbook;
+  s.direction = document.querySelector('input[name="wdir"]:checked').value;
+  s.order     = document.querySelector('input[name="worder"]:checked').value;
+  let list = data.filter(w=>w.inWrongBook);
+  if(!list.length){ toast('错词本里还没有词', 'error'); return; }
+  if(s.order === 'time'){
+    // 按错题加入的时间先后（先加入的在前）
+    list.sort((a,b)=>a.wrongOrder - b.wrongOrder);
+  }else{
+    // 乱序：Fisher-Yates 随机打乱
+    for(let i=list.length-1; i>0; i--){
+      const j = Math.floor(Math.random()*(i+1));
+      const t = list[i]; list[i] = list[j]; list[j] = t;
+    }
+  }
+  s.queue = list.map(w=>w.id);
+  s.pos = 0; s.answered = false; s.lastChange = null;
+  s.screen = 'quiz';
+  renderWrongbook();
+}
+
+function renderWrongQuestion(){
+  const s = state.wrongbook;
+  const word = byId(s.queue[s.pos]);
+  s.q = makeQuestion(word, s.direction);
+  s.answered = false;
+  s.lastChange = null;
+  const pct = Math.round(s.pos / s.queue.length * 100);
+  el('panel-wrongbook').innerHTML = `
+    <div class="card quiz-card">
+      <div class="progress"><div class="progress-fill indigo" style="width:${pct}%"></div></div>
+      <div class="progress-label">第 <b>${s.pos+1}</b> / ${s.queue.length} 个 · 连续答对进度：<b class="streak" id="wStreak">${word.wrongBookStreak}</b> / 3</div>
+      <div class="prompt">${escapeHtml(s.q.prompt)}</div>
+      <div class="dir-label">${s.q.label}</div>
+      <div class="answer-row">
+        <input id="wAnswer" class="answer-input" placeholder="在这里输入答案…" autocomplete="off">
+        <button class="btn primary indigo" id="wSubmit">提交</button>
+      </div>
+      <div class="feedback" id="wFeedback"></div>
+      <div class="quiz-foot"><button class="link-btn" id="wExit">退出</button></div>
+    </div>`;
+  el('wSubmit').addEventListener('click', submitWrong);
+  el('wAnswer').addEventListener('keydown', e=>{ if(e.key==='Enter') submitWrong(); });
+  el('wAnswer').addEventListener('input', e=>e.target.classList.remove('input-error'));
+  el('wExit').addEventListener('click', ()=>{ s.screen='setup'; renderWrongbook(); });
+  el('wAnswer').focus();
+}
+
+// 答对后的统一处理：连击 +1、满 3 次移出错词本、更新进度提示
+function wrongCorrectResult(word){
+  let msg, graduated = false;
+  if(word.wrongBookStreak >= 3){
+    word.inWrongBook = false;
+    word.wrongBookStreak = 0;
+    word.wrongOrder = 0;
+    msg = '🎉 已移出错词本！';
+    graduated = true;
+  }else{
+    msg = '✅ 答对啦，再对 ' + (3 - word.wrongBookStreak) + ' 次即可毕业';
+  }
+  saveData(); updateDashboard();
+  const streakEl = el('wStreak');
+  if(streakEl) streakEl.textContent = graduated ? '3' : String(word.wrongBookStreak);
+
+  const fb = el('wFeedback');
+  fb.innerHTML = `
+    <div class="result ok">
+      <span class="mark">✔</span>
+      <div><div class="result-title">回答正确</div><div class="result-detail">${msg}</div></div>
+    </div>
+    <div class="next-row"><button class="btn primary indigo" id="wNext">下一题 →</button></div>`;
+  el('wNext').addEventListener('click', nextWrongQuestion);
+  const input = el('wAnswer'); if(input) input.disabled = true;
+  const sub = el('wSubmit'); if(sub) sub.disabled = true;
+}
+
+// 错词本唯一兜底按钮：无论输入了什么，都按「答对」处理
+function acceptWrongAsCorrect(){
+  const s = state.wrongbook;
+  if(!s.answered) return;
+  const word = byId(s.q.wordId);
+  if(!word) return;
+
+  // 先还原误判造成的连击归零与 wrongOrder 更新，再执行正常答对逻辑
+  if(s.lastChange){
+    const w = byId(s.lastChange.id);
+    if(w) Object.assign(w, s.lastChange.prev);
+    s.lastChange = null;
+  }
+  word.wrongBookStreak++;
+  wrongCorrectResult(word);
+}
+
+function submitWrong(){
+  const s = state.wrongbook;
+  if(s.answered) return;
+  const input = el('wAnswer');
+  const val = input.value.trim();
+  if(!val){ shake(input); return; }
+
+  const correct = isMatch(val, s.q.answer);
+  const word = byId(s.q.wordId);
+  s.answered = true;
+
+  if(correct){
+    s.lastChange = null;
+    word.wrongBookStreak++;
+    wrongCorrectResult(word);
+  }else{
+    // 保存答错前状态，供「我其实答对了」撤销
+    s.lastChange = { id:word.id, prev:{
+      wrongBookStreak:word.wrongBookStreak, wrongOrder:word.wrongOrder
+    }};
+    word.wrongBookStreak = 0;
+    word.wrongOrder = Date.now();
+    saveData(); updateDashboard();
+    const fb = el('wFeedback');
+    fb.innerHTML = `
+      <div class="result bad">
+        <span class="mark">✘</span>
+        <div><div class="result-title">回答错误</div>
+        <div class="result-detail">正确答案：${escapeHtml(s.q.answer)}</div>
+        <div class="wrong-tip">连续进度已归零，继续留在错词本</div></div>
+      </div>
+      <div class="next-row">
+        <button class="btn primary indigo" id="wNext">下一题 →</button>
+        <button class="link-btn" id="wOverride">我其实答对了（算作正确）</button>
+      </div>`;
+    el('wNext').addEventListener('click', nextWrongQuestion);
+    el('wOverride').addEventListener('click', acceptWrongAsCorrect);
+  }
+  input.disabled = true;
+  el('wSubmit').disabled = true;
+}
+
+function nextWrongQuestion(){
+  const s = state.wrongbook;
+  s.pos++;
+  if(s.pos >= s.queue.length){ s.screen='done'; renderWrongbook(); }
+  else renderWrongQuestion();
+}
+
+/* ====================================================
+   模块三：词库管理
+   ==================================================== */
+function splitLine(line){
+  // 以「第一个中文字符」作为英文与中文释义的分界，而不再依赖 Tab / 逗号 / 空格
+  const m = line.search(/[\u4e00-\u9fa5]/);
+  if(m === -1) return null;           // 没有中文：表头或格式错误行，直接跳过
+  if(m === 0) return null;            // 没有英文部分，视为无效行
+
+  let word = line.slice(0, m).replace(/[\s,，;；:：\t]+$/, '').trim();
+  // 去掉英文后面可能残留的词性标记（如 "state n." -> "state"），保证 word 纯净
+  word = word.replace(/[\s,，;；:：\t]+(?:n|v|vt|vi|adj|adv|prep|conj|pron|art|num|int|abbr)\.?$/i, '').trim();
+  const meaning = line.slice(m).trim();
+
+  if(!word || !meaning) return null;
+  return [word, meaning];
+}
+function isHeader(word, meaning){
+  const a = word.toLowerCase().trim();
+  const b = meaning.toLowerCase().trim();
+  const first  = ['word','单词','英文','english','词汇','english word'];
+  const second = ['meaning','释义','中文','中文释义','意思','translation','解释','翻译'];
+  const allHeaderTokens = first.concat(second);
+  const tokens = a.split(/[\s,，、/]+/).filter(Boolean);
+  const aIsHeader = tokens.length > 0 && tokens.every(t=>allHeaderTokens.indexOf(t) !== -1);
+  return aIsHeader && second.some(h=>b.indexOf(h) !== -1);
+}
+
+function renderManage(){
+  const p = el('panel-manage');
+  const sorted = data.slice().sort((a,b)=>a.index-b.index);
+  const sel = state.manage.selected;
+  [...sel].forEach(id=>{ if(!byId(id)) sel.delete(id); });
+  const allChecked = sorted.length>0 && sorted.every(w=>sel.has(w.id));
+
+  const rows = sorted.map(w=>`
+    <tr>
+      <td class="cbox"><input type="checkbox" class="rowcheck" data-id="${w.id}" ${sel.has(w.id)?'checked':''}></td>
+      <td class="idx">${w.index}</td>
+      <td class="word">${escapeHtml(w.word)}</td>
+      <td class="mean">${escapeHtml(w.meaning)}</td>
+      <td>${w.inWrongBook ? '<span class="tag wrong">错词本</span>' : '<span class="tag ok">正常</span>'}</td>
+    </tr>`).join('');
+
+  p.innerHTML = `
+    <div class="card import-card">
+      <div class="card-head">
+        <div class="card-icon">📥</div>
+        <div><h2>一键导入词库</h2><p class="card-desc">支持从 Excel 直接复制粘贴，自动识别 Tab / 逗号 / 空格分隔</p></div>
+      </div>
+      <textarea id="importArea" placeholder="请从 Excel 直接复制（英文 和 中文），粘贴到这里&#10;例如：&#10;abandon    放弃；抛弃&#10;benefit, 益处；好处">${escapeHtml(state.manage.importText)}</textarea>
+      <div class="import-foot">
+        <span class="import-tip">重复单词会自动跳过 · 表头与空行自动过滤</span>
+        <button class="btn primary" id="importBtn">导入词库</button>
+      </div>
+      <div class="import-msg">${state.manage.importMsg}</div>
+    </div>
+    <div class="card">
+      <div class="list-head">
+        <h2>词汇列表 <span class="count-pill">${data.length}</span></h2>
+        <div class="list-actions">
+          <label class="checkall"><input type="checkbox" id="checkAll" ${allChecked?'checked':''}> 全选</label>
+          <button class="btn danger" id="deleteSelected" ${sel.size?'':'disabled'}>删除所选 (${sel.size})</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="vocab-table">
+          <thead><tr><th class="cbox"></th><th>序号</th><th>英文单词</th><th>中文释义</th><th>状态</th></tr></thead>
+          <tbody>${rows || '<tr><td colspan="5" class="empty-row">还没有词汇，请先导入</td></tr>'}</tbody>
+        </table>
+      </div>
+    </div>`;
+
+  el('importArea').addEventListener('input', e=>{ state.manage.importText = e.target.value; });
+  el('importBtn').addEventListener('click', doImport);
+  el('checkAll').addEventListener('change', e=>{
+    if(e.target.checked) sorted.forEach(w=>sel.add(w.id)); else sel.clear();
+    renderManage();
+  });
+  document.querySelectorAll('.rowcheck').forEach(cb=>cb.addEventListener('change', e=>{
+    if(e.target.checked) sel.add(e.target.dataset.id); else sel.delete(e.target.dataset.id);
+    renderManage();
+  }));
+  el('deleteSelected').addEventListener('click', deleteSelected);
+}
+
+function doImport(){
+  const text = el('importArea').value;
+  if(!text.trim()){ shake(el('importArea')); toast('请先粘贴内容', 'error'); return; }
+
+  const existing = new Set(data.map(w=>w.word.trim().toLowerCase()));
+  let added = 0, skipped = 0;
+  text.split(/\r?\n/).forEach(line=>{
+    line = line.trim();
+    if(!line) return;
+    const parts = splitLine(line);
+    if(!parts){ skipped++; return; }
+    if(isHeader(parts[0], parts[1])){ skipped++; return; }
+    const key = parts[0].toLowerCase();
+    if(existing.has(key)){ skipped++; return; }
+    existing.add(key);
+    data.push({
+      id:generateId(), index:nextIndex(), word:parts[0], meaning:parts[1],
+      inWrongBook:false, wrongBookStreak:0, wrongOrder:0
+    });
+    added++;
+  });
+
+  saveData(); updateDashboard();
+  state.manage.importText = '';
+  state.manage.importMsg = added
+    ? `<span class="ok-text">✅ 成功导入 ${added} 个词${skipped ? '，跳过 '+skipped+' 行（重复 / 表头 / 无效）' : ''}</span>`
+    : `<span class="err-text">⚠️ 没有导入任何新词${skipped ? '，跳过 '+skipped+' 行' : ''}</span>`;
+  renderManage();
+}
+
+function deleteSelected(){
+  const sel = state.manage.selected;
+  if(!sel.size) return;
+  const n = sel.size;
+  if(!confirm('确定删除选中的 ' + n + ' 个词吗？此操作不可恢复。')) return;
+  data = data.filter(w=>!sel.has(w.id));
+  data.sort((a,b)=>a.index-b.index).forEach((w,i)=>w.index = i+1);
+  saveData(); updateDashboard();
+  sel.clear();
+  renderManage();
+  toast('已删除 ' + n + ' 个词');
+}
+
+/* ============ 初始化 ============ */
+updateDashboard();
+renderReview();
+renderWrongbook();
+renderManage();
+})();
+</script>
+</body>
+</html>
